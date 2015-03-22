@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-watchtest WatchKit Extension-Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-watchtest WatchKit Extension-SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-watchtest WatchKit Extension.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>104EA3D1493C718CB07BCDEA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>38BA3784FC349079A6848B1F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8549D5A8F34209955050CD9D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9971147AFBA3F33E3CBBED8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B1B97CE18C6AF7C438C0C087</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D51D1F8EF534B3C495295E32</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

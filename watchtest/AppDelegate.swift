@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,6 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(application: UIApplication!, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]!, reply: (([NSObject : AnyObject]!) -> Void)!) {
+        
+        //Alamofire.request(.GET, "http://jsonplaceholder.typicode.com/posts", parameters: nil).responseJSON{
+        Alamofire.request(.GET, "http://localhost:3000/tangos.json", parameters: nil).responseJSON{
+        //Alamofire.request(.GET, "https://whispering-oasis-5698.herokuapp.com/tangos.json", parameters: nil).responseJSON{
+            (request, response, JSONdata, error) in
+            var jsonResult = JSON(JSONdata!)
+            var result = ["data":jsonResult.rawValue]
+            reply(result)
+        }
+    }
 
 }
 
