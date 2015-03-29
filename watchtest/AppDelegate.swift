@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         // Override point for customization after application launch.
         if (url.host == "oauth-callback") {
-            
             if ( url.path!.hasPrefix("/feedly" )){
                 OAuth2Swift.handleOpenURL(url)
             }
@@ -33,8 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
-
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -58,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication!, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]!, reply: (([NSObject : AnyObject]!) -> Void)!) {
-        
+        // Called when WatchKit application invokes
         // Check if the user has already had valid access token
         if(!FeedlyManager.sharedInstance.isUserHasValidToken()){
             returnErrorMessage(reply)
@@ -66,8 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let action = userInfo["action"] as String
         if(action == "update"){
+            FeedlyManager.sharedInstance.getNewItems()
+            
             // Check if the userId has been logged in UserDefaults
-            if let userId = FeedlyManager.sharedInstance.retrieveUserDefaultsWithKey(FeedlyManager.UserDefaultsKeys.userId){
+            /*if let userId = FeedlyManager.sharedInstance.retrieveUserDefaultsWithKey(FeedlyManager.UserDefaultsKeys.userId){
                 var streamRequest = FeedlyManager.sharedInstance.getFeedlyRequest("/streams/contents?streamId=user/" + userId + "/category/global.all&unreadOnly=true")
                 Alamofire.request(streamRequest).responseJSON{ (request, response, JSONdata, error) in
                     var result:JSON = JSON(JSONdata!)
@@ -77,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }else{
                 returnErrorMessage(reply)
-            }
+            }*/
         }else if(action == "markAsRead"){
             var entries:Array = [userInfo["entryId"] as String]
             var param = ["type":"entries","action":"markAsRead","entryIds":entries]
