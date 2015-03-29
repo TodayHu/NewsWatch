@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>WatchExtensionEmbeddedLib.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>watchtest WatchKit App.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,6 +22,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>DF3AB9F11AC8047D00E6D8C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF3AB9FB1AC8047D00E6D8C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DF4337841ABE5DEE0082B0CB</key>
 		<dict>
 			<key>primary</key>

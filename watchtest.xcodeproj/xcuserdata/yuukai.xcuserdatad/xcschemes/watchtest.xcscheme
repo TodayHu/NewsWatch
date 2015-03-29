@@ -34,6 +34,20 @@
                ReferencedContainer = "container:watchtest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DF3AB9FB1AC8047D00E6D8C5"
+               BuildableName = "WatchExtensionEmbeddedLibTests.xctest"
+               BlueprintName = "WatchExtensionEmbeddedLibTests"
+               ReferencedContainer = "container:watchtest.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +63,16 @@
                BlueprintIdentifier = "DF4337991ABE5DEE0082B0CB"
                BuildableName = "watchtestTests.xctest"
                BlueprintName = "watchtestTests"
+               ReferencedContainer = "container:watchtest.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DF3AB9FB1AC8047D00E6D8C5"
+               BuildableName = "WatchExtensionEmbeddedLibTests.xctest"
+               BlueprintName = "WatchExtensionEmbeddedLibTests"
                ReferencedContainer = "container:watchtest.xcodeproj">
             </BuildableReference>
          </TestableReference>

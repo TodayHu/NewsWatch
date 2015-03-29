@@ -8,9 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		1268B59C82D3819C942EB7F7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F556A675D51D67DBCDA35093 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		22541B3A572D3BB2D7E47AAC /* Pods_WatchExtensionEmbeddedLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A904BDE87208E8113A4F056 /* Pods_WatchExtensionEmbeddedLib.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		522C1D40A9826C8292C249F0 /* Pods_watchtest_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BC79E7E103E0D08C0292F /* Pods_watchtest_WatchKit_Extension.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DF1722D61ABEBF60009F609A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF1722D41ABEBF60009F609A /* Interface.storyboard */; };
-		DF3AB9EC1AC7D41500E6D8C5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3AB9EB1AC7D41500E6D8C5 /* Item.swift */; };
+		DF3AB9FD1AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF3AB9F21AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework */; };
+		DF3ABA061AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3ABA051AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests.swift */; };
+		DF3ABA091AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF3AB9F21AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework */; };
+		DF3ABA0A1AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF3AB9F21AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF3ABA121AC804CC00E6D8C5 /* WatchExtensionEmbeddedLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF3AB9F21AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework */; };
+		DF3ABA141AC8057000E6D8C5 /* LibFeedlyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3ABA131AC8057000E6D8C5 /* LibFeedlyManager.swift */; };
+		DF3ABA161AC806F300E6D8C5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3ABA151AC806F300E6D8C5 /* Item.swift */; };
+		DF3ABA171AC807F500E6D8C5 /* LibFeedlyManager.swift in Headers */ = {isa = PBXBuildFile; fileRef = DF3ABA131AC8057000E6D8C5 /* LibFeedlyManager.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF3ABA181AC8134B00E6D8C5 /* Item.swift in Headers */ = {isa = PBXBuildFile; fileRef = DF3ABA151AC806F300E6D8C5 /* Item.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF43378B1ABE5DEE0082B0CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF43378A1ABE5DEE0082B0CB /* AppDelegate.swift */; };
 		DF43378D1ABE5DEE0082B0CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF43378C1ABE5DEE0082B0CB /* ViewController.swift */; };
 		DF4337901ABE5DEE0082B0CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF43378E1ABE5DEE0082B0CB /* Main.storyboard */; };
@@ -26,11 +35,31 @@
 		DF5854C21ABE827300655F5E /* MainRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5854C11ABE827300655F5E /* MainRowType.swift */; };
 		DF5854C41ABE87EF00655F5E /* ThirdInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5854C31ABE87EF00655F5E /* ThirdInterfaceController.swift */; };
 		DF825D6D1AC685B00030D326 /* FeedlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF825D6C1AC685B00030D326 /* FeedlyViewController.swift */; };
-		DF825D711AC6BE810030D326 /* FeedlyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF825D701AC6BE810030D326 /* FeedlyManager.swift */; };
 		DF9D7F411AC7CE2400CF5637 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D7F401AC7CE2400CF5637 /* RLMSupport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DF3AB9FE1AC8047D00E6D8C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF43377D1ABE5DED0082B0CB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF3AB9F11AC8047D00E6D8C5;
+			remoteInfo = WatchExtensionEmbeddedLib;
+		};
+		DF3ABA001AC8047D00E6D8C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF43377D1ABE5DED0082B0CB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF4337841ABE5DEE0082B0CB;
+			remoteInfo = watchtest;
+		};
+		DF3ABA071AC8047D00E6D8C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF43377D1ABE5DED0082B0CB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF3AB9F11AC8047D00E6D8C5;
+			remoteInfo = WatchExtensionEmbeddedLib;
+		};
 		DF43379B1ABE5DEE0082B0CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DF43377D1ABE5DED0082B0CB /* Project object */;
@@ -55,6 +84,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		DF3ABA0E1AC8047D00E6D8C5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DF3ABA0A1AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DF4337CD1ABE5E380082B0CB /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -69,11 +109,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A904BDE87208E8113A4F056 /* Pods_WatchExtensionEmbeddedLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchExtensionEmbeddedLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4682849DCB2E83EFCF0224 /* Pods-WatchExtensionEmbeddedLib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchExtensionEmbeddedLib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatchExtensionEmbeddedLib/Pods-WatchExtensionEmbeddedLib.debug.xcconfig"; sourceTree = "<group>"; };
+		5EFA3CEBD5D629D2D8489298 /* Pods-WatchExtensionEmbeddedLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchExtensionEmbeddedLib.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchExtensionEmbeddedLib/Pods-WatchExtensionEmbeddedLib.release.xcconfig"; sourceTree = "<group>"; };
 		77302A6DF480F32700218FA6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		830EFE1F64404EBCBAA86FDA /* Pods-watchtest WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchtest WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchtest WatchKit Extension/Pods-watchtest WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		B2367FFB26E1205355B231BD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DF1722D51ABEBF60009F609A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		DF3AB9EB1AC7D41500E6D8C5 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		DF3AB9F21AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WatchExtensionEmbeddedLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF3AB9F51AC8047D00E6D8C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF3AB9FC1AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchExtensionEmbeddedLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF3ABA041AC8047D00E6D8C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF3ABA051AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchExtensionEmbeddedLibTests.swift; sourceTree = "<group>"; };
+		DF3ABA131AC8057000E6D8C5 /* LibFeedlyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibFeedlyManager.swift; sourceTree = "<group>"; };
+		DF3ABA151AC806F300E6D8C5 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DF4337851ABE5DEE0082B0CB /* watchtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF4337891ABE5DEE0082B0CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF43378A1ABE5DEE0082B0CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,7 +146,6 @@
 		DF825D6C1AC685B00030D326 /* FeedlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedlyViewController.swift; sourceTree = "<group>"; };
 		DF825D6E1AC6AF570030D326 /* watchtest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchtest.entitlements; sourceTree = "<group>"; };
 		DF825D6F1AC6AF950030D326 /* watchtest WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchtest WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		DF825D701AC6BE810030D326 /* FeedlyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedlyManager.swift; sourceTree = "<group>"; };
 		DF9D7F401AC7CE2400CF5637 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		E70426CD88DD7D69D6D96142 /* Pods-watchtest WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchtest WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchtest WatchKit Extension/Pods-watchtest WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		F33BC79E7E103E0D08C0292F /* Pods_watchtest_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchtest_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,10 +153,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DF3AB9EE1AC8047D00E6D8C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22541B3A572D3BB2D7E47AAC /* Pods_WatchExtensionEmbeddedLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF3AB9F91AC8047D00E6D8C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF3AB9FD1AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DF4337821ABE5DEE0082B0CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF3ABA091AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework in Frameworks */,
 				1268B59C82D3819C942EB7F7 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF3ABA121AC804CC00E6D8C5 /* WatchExtensionEmbeddedLib.framework in Frameworks */,
 				522C1D40A9826C8292C249F0 /* Pods_watchtest_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,8 +204,45 @@
 				77302A6DF480F32700218FA6 /* Pods.release.xcconfig */,
 				830EFE1F64404EBCBAA86FDA /* Pods-watchtest WatchKit Extension.debug.xcconfig */,
 				E70426CD88DD7D69D6D96142 /* Pods-watchtest WatchKit Extension.release.xcconfig */,
+				3B4682849DCB2E83EFCF0224 /* Pods-WatchExtensionEmbeddedLib.debug.xcconfig */,
+				5EFA3CEBD5D629D2D8489298 /* Pods-WatchExtensionEmbeddedLib.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DF3AB9F31AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib */ = {
+			isa = PBXGroup;
+			children = (
+				DF3AB9F41AC8047D00E6D8C5 /* Supporting Files */,
+				DF3ABA131AC8057000E6D8C5 /* LibFeedlyManager.swift */,
+				DF3ABA151AC806F300E6D8C5 /* Item.swift */,
+			);
+			path = WatchExtensionEmbeddedLib;
+			sourceTree = "<group>";
+		};
+		DF3AB9F41AC8047D00E6D8C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF3AB9F51AC8047D00E6D8C5 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DF3ABA021AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests */ = {
+			isa = PBXGroup;
+			children = (
+				DF3ABA051AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests.swift */,
+				DF3ABA031AC8047D00E6D8C5 /* Supporting Files */,
+			);
+			path = WatchExtensionEmbeddedLibTests;
+			sourceTree = "<group>";
+		};
+		DF3ABA031AC8047D00E6D8C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF3ABA041AC8047D00E6D8C5 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		DF43377C1ABE5DED0082B0CB = {
@@ -149,6 +252,8 @@
 				DF43379D1ABE5DEE0082B0CB /* watchtestTests */,
 				DF4337AF1ABE5E370082B0CB /* watchtest WatchKit Extension */,
 				DF4337BC1ABE5E370082B0CB /* watchtest WatchKit App */,
+				DF3AB9F31AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib */,
+				DF3ABA021AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests */,
 				DF4337861ABE5DEE0082B0CB /* Products */,
 				86DE9A0080F025FFE209E966 /* Pods */,
 				F77559315C4ABEFFCB3F9358 /* Frameworks */,
@@ -162,6 +267,8 @@
 				DF43379A1ABE5DEE0082B0CB /* watchtestTests.xctest */,
 				DF4337AE1ABE5E370082B0CB /* watchtest WatchKit Extension.appex */,
 				DF4337B81ABE5E370082B0CB /* watchtest WatchKit App.app */,
+				DF3AB9F21AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework */,
+				DF3AB9FC1AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,13 +279,11 @@
 				DF825D6E1AC6AF570030D326 /* watchtest.entitlements */,
 				DF43378A1ABE5DEE0082B0CB /* AppDelegate.swift */,
 				DF43378C1ABE5DEE0082B0CB /* ViewController.swift */,
-				DF3AB9EB1AC7D41500E6D8C5 /* Item.swift */,
 				DF43378E1ABE5DEE0082B0CB /* Main.storyboard */,
 				DF4337911ABE5DEE0082B0CB /* Images.xcassets */,
 				DF4337931ABE5DEE0082B0CB /* LaunchScreen.xib */,
 				DF4337881ABE5DEE0082B0CB /* Supporting Files */,
 				DF825D6C1AC685B00030D326 /* FeedlyViewController.swift */,
-				DF825D701AC6BE810030D326 /* FeedlyManager.swift */,
 				DF9D7F401AC7CE2400CF5637 /* RLMSupport.swift */,
 			);
 			path = watchtest;
@@ -254,13 +359,66 @@
 			children = (
 				F556A675D51D67DBCDA35093 /* Pods.framework */,
 				F33BC79E7E103E0D08C0292F /* Pods_watchtest_WatchKit_Extension.framework */,
+				0A904BDE87208E8113A4F056 /* Pods_WatchExtensionEmbeddedLib.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		DF3AB9EF1AC8047D00E6D8C5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF3ABA171AC807F500E6D8C5 /* LibFeedlyManager.swift in Headers */,
+				DF3ABA181AC8134B00E6D8C5 /* Item.swift in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		DF3AB9F11AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF3ABA0B1AC8047D00E6D8C5 /* Build configuration list for PBXNativeTarget "WatchExtensionEmbeddedLib" */;
+			buildPhases = (
+				F5425DA21376876781FA1C20 /* Check Pods Manifest.lock */,
+				DF3AB9ED1AC8047D00E6D8C5 /* Sources */,
+				DF3AB9EE1AC8047D00E6D8C5 /* Frameworks */,
+				DF3AB9EF1AC8047D00E6D8C5 /* Headers */,
+				DF3AB9F01AC8047D00E6D8C5 /* Resources */,
+				01EFA75835B4EC6E4F7359C7 /* Embed Pods Frameworks */,
+				EB56B2897E2AC5E7169EAB0B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WatchExtensionEmbeddedLib;
+			productName = WatchExtensionEmbeddedLib;
+			productReference = DF3AB9F21AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DF3AB9FB1AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF3ABA0F1AC8047D00E6D8C5 /* Build configuration list for PBXNativeTarget "WatchExtensionEmbeddedLibTests" */;
+			buildPhases = (
+				DF3AB9F81AC8047D00E6D8C5 /* Sources */,
+				DF3AB9F91AC8047D00E6D8C5 /* Frameworks */,
+				DF3AB9FA1AC8047D00E6D8C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF3AB9FF1AC8047D00E6D8C5 /* PBXTargetDependency */,
+				DF3ABA011AC8047D00E6D8C5 /* PBXTargetDependency */,
+			);
+			name = WatchExtensionEmbeddedLibTests;
+			productName = WatchExtensionEmbeddedLibTests;
+			productReference = DF3AB9FC1AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DF4337841ABE5DEE0082B0CB /* watchtest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DF4337A41ABE5DEE0082B0CB /* Build configuration list for PBXNativeTarget "watchtest" */;
@@ -272,11 +430,13 @@
 				DF4337CD1ABE5E380082B0CB /* Embed App Extensions */,
 				B838A4DDCA35A5E0FED01BE4 /* Embed Pods Frameworks */,
 				EE2088317E26EDD1DE284B19 /* Copy Pods Resources */,
+				DF3ABA0E1AC8047D00E6D8C5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				DF4337C51ABE5E370082B0CB /* PBXTargetDependency */,
+				DF3ABA081AC8047D00E6D8C5 /* PBXTargetDependency */,
 			);
 			name = watchtest;
 			productName = watchtest;
@@ -346,6 +506,14 @@
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Ukai Yu";
 				TargetAttributes = {
+					DF3AB9F11AC8047D00E6D8C5 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = K99ED6PN2U;
+					};
+					DF3AB9FB1AC8047D00E6D8C5 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = DF4337841ABE5DEE0082B0CB;
+					};
 					DF4337841ABE5DEE0082B0CB = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = K99ED6PN2U;
@@ -390,11 +558,27 @@
 				DF4337991ABE5DEE0082B0CB /* watchtestTests */,
 				DF4337AD1ABE5E370082B0CB /* watchtest WatchKit Extension */,
 				DF4337B71ABE5E370082B0CB /* watchtest WatchKit App */,
+				DF3AB9F11AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib */,
+				DF3AB9FB1AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DF3AB9F01AC8047D00E6D8C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF3AB9FA1AC8047D00E6D8C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DF4337831ABE5DEE0082B0CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -434,6 +618,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		01EFA75835B4EC6E4F7359C7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatchExtensionEmbeddedLib/Pods-WatchExtensionEmbeddedLib-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2C8FEE81AEAEDA4F26BC073C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -509,6 +708,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-watchtest WatchKit Extension/Pods-watchtest WatchKit Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EB56B2897E2AC5E7169EAB0B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatchExtensionEmbeddedLib/Pods-WatchExtensionEmbeddedLib-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EE2088317E26EDD1DE284B19 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -524,9 +738,41 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F5425DA21376876781FA1C20 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DF3AB9ED1AC8047D00E6D8C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF3ABA161AC806F300E6D8C5 /* Item.swift in Sources */,
+				DF3ABA141AC8057000E6D8C5 /* LibFeedlyManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF3AB9F81AC8047D00E6D8C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF3ABA061AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DF4337811ABE5DEE0082B0CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -534,8 +780,6 @@
 				DF43378D1ABE5DEE0082B0CB /* ViewController.swift in Sources */,
 				DF43378B1ABE5DEE0082B0CB /* AppDelegate.swift in Sources */,
 				DF9D7F411AC7CE2400CF5637 /* RLMSupport.swift in Sources */,
-				DF825D711AC6BE810030D326 /* FeedlyManager.swift in Sources */,
-				DF3AB9EC1AC7D41500E6D8C5 /* Item.swift in Sources */,
 				DF825D6D1AC685B00030D326 /* FeedlyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,6 +805,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DF3AB9FF1AC8047D00E6D8C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF3AB9F11AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib */;
+			targetProxy = DF3AB9FE1AC8047D00E6D8C5 /* PBXContainerItemProxy */;
+		};
+		DF3ABA011AC8047D00E6D8C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF4337841ABE5DEE0082B0CB /* watchtest */;
+			targetProxy = DF3ABA001AC8047D00E6D8C5 /* PBXContainerItemProxy */;
+		};
+		DF3ABA081AC8047D00E6D8C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF3AB9F11AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib */;
+			targetProxy = DF3ABA071AC8047D00E6D8C5 /* PBXContainerItemProxy */;
+		};
 		DF43379C1ABE5DEE0082B0CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DF4337841ABE5DEE0082B0CB /* watchtest */;
@@ -606,6 +865,91 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DF3ABA0C1AC8047D00E6D8C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B4682849DCB2E83EFCF0224 /* Pods-WatchExtensionEmbeddedLib.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WatchExtensionEmbeddedLib/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DF3ABA0D1AC8047D00E6D8C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EFA3CEBD5D629D2D8489298 /* Pods-WatchExtensionEmbeddedLib.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WatchExtensionEmbeddedLib/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DF3ABA101AC8047D00E6D8C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WatchExtensionEmbeddedLibTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/watchtest.app/watchtest";
+			};
+			name = Debug;
+		};
+		DF3ABA111AC8047D00E6D8C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WatchExtensionEmbeddedLibTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/watchtest.app/watchtest";
+			};
+			name = Release;
+		};
 		DF4337A21ABE5DEE0082B0CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -816,6 +1160,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DF3ABA0B1AC8047D00E6D8C5 /* Build configuration list for PBXNativeTarget "WatchExtensionEmbeddedLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF3ABA0C1AC8047D00E6D8C5 /* Debug */,
+				DF3ABA0D1AC8047D00E6D8C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF3ABA0F1AC8047D00E6D8C5 /* Build configuration list for PBXNativeTarget "WatchExtensionEmbeddedLibTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF3ABA101AC8047D00E6D8C5 /* Debug */,
+				DF3ABA111AC8047D00E6D8C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DF4337801ABE5DEE0082B0CB /* Build configuration list for PBXProject "watchtest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

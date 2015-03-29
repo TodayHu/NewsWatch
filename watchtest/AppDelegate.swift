@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import OAuthSwift
+import WatchExtensionEmbeddedLib
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -57,13 +58,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]!, reply: (([NSObject : AnyObject]!) -> Void)!) {
         // Called when WatchKit application invokes
         // Check if the user has already had valid access token
-        if(!FeedlyManager.sharedInstance.isUserHasValidToken()){
+        if(!LibFeedlyManager.sharedInstance.isUserHasValidToken()){
             returnErrorMessage(reply)
         }
         
         let action = userInfo["action"] as String
         if(action == "update"){
-            FeedlyManager.sharedInstance.getNewItems()
+            LibFeedlyManager.sharedInstance.getNewItems({ message in
+                var returnResult = ["response" : "success"]
+                reply(returnResult)
+            })
             
             // Check if the userId has been logged in UserDefaults
             /*if let userId = FeedlyManager.sharedInstance.retrieveUserDefaultsWithKey(FeedlyManager.UserDefaultsKeys.userId){
@@ -80,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else if(action == "markAsRead"){
             var entries:Array = [userInfo["entryId"] as String]
             var param = ["type":"entries","action":"markAsRead","entryIds":entries]
-            var markRequest = FeedlyManager.sharedInstance.postFeedlyRequest("/markers" , params: param)
+            var markRequest = LibFeedlyManager.sharedInstance.postFeedlyRequest("/markers" , params: param)
             
             Alamofire.request(markRequest).responseJSON{ (request, response, JSONdata, error) in
                 var returnResult = ["response" : response?.statusCode as Int!]

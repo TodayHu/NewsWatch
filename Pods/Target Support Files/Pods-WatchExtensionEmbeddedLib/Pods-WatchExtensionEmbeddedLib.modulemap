@@ -1,0 +1,6 @@
+framework module Pods_WatchExtensionEmbeddedLib {
+  umbrella header "Pods-WatchExtensionEmbeddedLib-umbrella.h"
+
+  export *
+  module * { export * }
+}

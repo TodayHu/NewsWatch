@@ -13,3 +13,8 @@ pod "SwiftyJSON", ">= 2.1.3"
 pod 'Realm'
 end
 
+target 'WatchExtensionEmbeddedLib', :exclusive => true do
+pod 'Alamofire', '~> 1.1'
+pod "SwiftyJSON", ">= 2.1.3"
+pod 'Realm'
+end

@@ -48,6 +48,20 @@
                ReferencedContainer = "container:watchtest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DF3AB9FB1AC8047D00E6D8C5"
+               BuildableName = "WatchExtensionEmbeddedLibTests.xctest"
+               BlueprintName = "WatchExtensionEmbeddedLibTests"
+               ReferencedContainer = "container:watchtest.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -56,6 +70,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DF3AB9FB1AC8047D00E6D8C5"
+               BuildableName = "WatchExtensionEmbeddedLibTests.xctest"
+               BlueprintName = "WatchExtensionEmbeddedLibTests"
+               ReferencedContainer = "container:watchtest.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -9,6 +9,8 @@
 import WatchKit
 import Foundation
 import SwiftyJSON
+import Realm
+import WatchExtensionEmbeddedLib
 
 class InterfaceController: WKInterfaceController {
 
@@ -40,7 +42,12 @@ class InterfaceController: WKInterfaceController {
                 self.noButton.setHidden(false)
                 self.mainTable.setHidden(false)
                 self.publisherLabel.setHidden(false)
-                self.setNextTitle()
+                //self.setNextTitle()
+                
+                let row = self.mainTable.rowControllerAtIndex(0) as MainRowType
+                let realm = RLMRealm.defaultRealm()
+                let item = LibFeedlyManager.sharedInstance.getItem()
+                row.mainLabel.setText(item.title)
                 println(self.array)
             }else{
                 self.mainTable.setHidden(false)

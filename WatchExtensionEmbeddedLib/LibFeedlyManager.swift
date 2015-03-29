@@ -1,36 +1,42 @@
 //
-//  FeedlyManager.swift
+//  LibFeedlyManager.swift
 //  watchtest
 //
-//  Created by Ukai Yu on 3/28/15.
+//  Created by Ukai Yu on 3/29/15.
 //  Copyright (c) 2015 Ukai Yu. All rights reserved.
 //
 
 import Foundation
-import Realm
 import Alamofire
 import SwiftyJSON
+import Realm
 
-private let _FeedlyManagerSharedInstance = FeedlyManager()
+private let _FeedlyManagerSharedInstance = LibFeedlyManager()
 private let feedlyPrefix = "http://sandbox.feedly.com/v3"
-private let suiteName = "group.jp.ukay.watchtest"
+private let suiteName = "group.jp.ukai.watchtest"
 
-class FeedlyManager {
+public class LibFeedlyManager {
     
-    class var sharedInstance: FeedlyManager {
+    init(){
+        let container = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(suiteName)
+        let realmUrl = container?.URLByAppendingPathComponent("default.realm")
+        RLMRealm.setDefaultRealmPath(realmUrl?.path)
+    }
+    
+    public class var sharedInstance: LibFeedlyManager {
         return _FeedlyManagerSharedInstance
     }
     
-    internal struct UserDefaultsKeys {
-        static let access_token = "access_token"
-        static let userId = "userId"
+    public struct UserDefaultsKeys {
+        public static let access_token = "access_token"
+        public static let userId = "userId"
     }
-
-    func getFeedlyRequest(url: String) -> NSMutableURLRequest {
+    
+    public func getFeedlyRequest(url: String) -> NSMutableURLRequest {
         return getFeedlyRequestWithParams(url, params: nil)
     }
     
-    func getFeedlyRequestWithParams(url: String, params:NSDictionary?) -> NSMutableURLRequest{
+    public func getFeedlyRequestWithParams(url: String, params:NSDictionary?) -> NSMutableURLRequest{
         let access_token = retrieveUserDefaultsWithKey(UserDefaultsKeys.access_token)
         
         let URL = NSURL(string: feedlyPrefix + url)!
@@ -45,7 +51,7 @@ class FeedlyManager {
         return mutableURLRequest
     }
     
-    func postFeedlyRequest(url: String, params:NSDictionary) -> NSMutableURLRequest {
+    public func postFeedlyRequest(url: String, params:NSDictionary) -> NSMutableURLRequest {
         let access_token = retrieveUserDefaultsWithKey(UserDefaultsKeys.access_token)
         
         let URL = NSURL(string: feedlyPrefix + url)!
@@ -58,15 +64,15 @@ class FeedlyManager {
         return mutableURLRequest
     }
     
-    func retrieveUserDefaultsWithKey(key:String) -> String? {
+    public func retrieveUserDefaultsWithKey(key:String) -> String? {
         let defaults = NSUserDefaults(suiteName: suiteName)
         let value = defaults?.objectForKey(key) as String?
         println("\(value) is retrieved")
         return value
     }
     
-    func getNewItems(){
-        if let userId = FeedlyManager.sharedInstance.retrieveUserDefaultsWithKey(FeedlyManager.UserDefaultsKeys.userId){
+    public func getNewItems(completion:((String)->Void)?){
+        if let userId = self.retrieveUserDefaultsWithKey(UserDefaultsKeys.userId){
             
             var requestUrl = "/streams/contents?streamId=user/" + userId + "/category/global.all&unreadOnly=true"
             if let items = Item.allObjects() {
@@ -77,7 +83,7 @@ class FeedlyManager {
                 }
             }
             println("requesturl: \(requestUrl)")
-            var streamRequest = FeedlyManager.sharedInstance.getFeedlyRequest(requestUrl)
+            var streamRequest = getFeedlyRequest(requestUrl)
             
             // Get the default Realm
             let realm = RLMRealm.defaultRealm()
@@ -111,14 +117,19 @@ class FeedlyManager {
                     numOfSaved++
                 }
                 println("saved \(numOfSaved) items")
+                completion?("retrieved \(numOfItem) items saved \(numOfSaved) items")
             }
         }else{
             
         }
-
     }
     
-    func saveUserDefaultsWithKey(key:String, value:String){
+    public func getItem() -> Item{
+        let item = Item.allObjects().firstObject() as Item
+        return item
+    }
+    
+    public func saveUserDefaultsWithKey(key:String, value:String){
         let defaults = NSUserDefaults(suiteName: suiteName)
         defaults?.setObject(value, forKey: key)
         if(defaults?.synchronize() == true){
@@ -128,7 +139,7 @@ class FeedlyManager {
         }
     }
     
-    func isUserHasValidToken() -> Bool{
+    public func isUserHasValidToken() -> Bool{
         if let token = retrieveUserDefaultsWithKey(UserDefaultsKeys.access_token) {
             return true
         }
