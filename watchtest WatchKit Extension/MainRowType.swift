@@ -10,6 +10,5 @@ import WatchKit
 import Foundation
 
 class MainRowType: NSObject {
-    @IBOutlet weak var rowDescription: WKInterfaceLabel!
-
+    @IBOutlet weak var mainLabel: WKInterfaceLabel!
 }
