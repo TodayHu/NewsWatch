@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import OAuthSwift
 import WatchExtensionEmbeddedLib
+import Realm
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -82,12 +83,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 returnErrorMessage(reply)
             }*/
         }else if(action == "markAsRead"){
-            var entries:Array = [userInfo["entryId"] as String]
+            let entry = userInfo["entryId"] as String
+            var entries:Array = [entry]
             var param = ["type":"entries","action":"markAsRead","entryIds":entries]
             var markRequest = LibFeedlyManager.sharedInstance.postFeedlyRequest("/markers" , params: param)
             
             Alamofire.request(markRequest).responseJSON{ (request, response, JSONdata, error) in
                 var returnResult = ["response" : response?.statusCode as Int!]
+                if(response?.statusCode == 200){
+                    
+                    let predicate = NSPredicate(format: "id = %@", entry)
+                    if(Item.objectsWithPredicate(predicate).count != 0){
+                        let item = Item.objectsWithPredicate(predicate).firstObject() as Item!
+                        let realm = RLMRealm.defaultRealm()
+                        realm.beginWriteTransaction()
+                        item.isUnread = false
+                        realm.commitWriteTransaction()
+                    }
+                }
+                
                 reply(returnResult)
             }
         }

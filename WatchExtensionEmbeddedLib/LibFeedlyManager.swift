@@ -124,9 +124,9 @@ public class LibFeedlyManager {
         }
     }
     
-    public func getItem() -> Item{
-        let item = Item.allObjects().firstObject() as Item
-        return item
+    public func getItems() -> RLMResults{
+        let items = Item.allObjects().sortedResultsUsingProperty("publishedAt", ascending: false)
+        return items
     }
     
     public func saveUserDefaultsWithKey(key:String, value:String){

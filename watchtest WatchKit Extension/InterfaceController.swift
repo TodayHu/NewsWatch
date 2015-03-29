@@ -19,7 +19,8 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var publisherLabel: WKInterfaceLabel!
     @IBOutlet weak var mainTable: WKInterfaceTable!
     var array:JSON = nil
-    var current = -1
+    var current:UInt = 0
+    var queryResult:RLMResults?
     
     override init() {
         
@@ -42,12 +43,9 @@ class InterfaceController: WKInterfaceController {
                 self.noButton.setHidden(false)
                 self.mainTable.setHidden(false)
                 self.publisherLabel.setHidden(false)
-                //self.setNextTitle()
+                self.queryResult = LibFeedlyManager.sharedInstance.getItems()
+                self.setNextTitle()
                 
-                let row = self.mainTable.rowControllerAtIndex(0) as MainRowType
-                let realm = RLMRealm.defaultRealm()
-                let item = LibFeedlyManager.sharedInstance.getItem()
-                row.mainLabel.setText(item.title)
                 println(self.array)
             }else{
                 self.mainTable.setHidden(false)
@@ -71,19 +69,22 @@ class InterfaceController: WKInterfaceController {
     
     func setNextTitle() {
         //Mark the entry as read if it's not first article
-        if(current >= 0){
-            markAsRead(self.array["data"]["items"][current]["id"].string!)
+        if(current > 0){
+            let previousItem = queryResult![current] as Item
+            markAsRead(previousItem.id)
         }
         
         current++
         
-        let row = mainTable.rowControllerAtIndex(0) as MainRowType
-        row.mainLabel.setText(self.array["data"]["items"][current]["title"].string)
-        self.publisherLabel.setText(self.array["data"]["items"][current]["origin"]["title"].string)
+        let row = self.mainTable.rowControllerAtIndex(0) as MainRowType
+        let item = queryResult![current] as Item
+        row.mainLabel.setText(item.title)
+        publisherLabel.setText(item.publisherName)
     }
     
     func markAsRead(entryId:String){
         let dic = ["action":"markAsRead","entryId":entryId]
+        
         WKInterfaceController.openParentApplication(dic, reply: { (replyInfo, error) -> Void in
             let result = JSON (replyInfo)
             println(result)
@@ -100,7 +101,7 @@ class InterfaceController: WKInterfaceController {
         if( array["response"].string == "error"){
             return
         }
-        self.pushControllerWithName("DetailController", context: self.array["data"]["items"][current].rawValue)
+        //self.pushControllerWithName("DetailController", context: self.array["data"]["items"][current].rawValue)
     }
 
 }
