@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "09197AD575D7C82BB9BE304B"
+               BlueprintIdentifier = "844555FF67BC06DF2F880648"
                BuildableName = "Alamofire.framework"
                BlueprintName = "Pods-watchtest WatchKit Extension-Alamofire"
                ReferencedContainer = "container:Pods.xcodeproj">

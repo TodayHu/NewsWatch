@@ -24,11 +24,19 @@ class FeedlyManager {
     }
 
     func getFeedlyRequest(url: String) -> NSMutableURLRequest {
+        return getFeedlyRequestWithParams(url, params: nil)
+    }
+    
+    func getFeedlyRequestWithParams(url: String, params:NSDictionary?) -> NSMutableURLRequest{
         let access_token = retrieveUserDefaultsWithKey(UserDefaultsKeys.access_token)
         
         let URL = NSURL(string: feedlyPrefix + url)!
         let mutableURLRequest = NSMutableURLRequest(URL: URL)
         mutableURLRequest.HTTPMethod = "GET"
+        if let paramDic = params{
+            mutableURLRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(paramDic, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
+            mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
         var JSONSerializationError: NSError? = nil
         mutableURLRequest.setValue(access_token, forHTTPHeaderField: "Authorization")
         return mutableURLRequest
@@ -40,8 +48,6 @@ class FeedlyManager {
         let URL = NSURL(string: feedlyPrefix + url)!
         let mutableURLRequest = NSMutableURLRequest(URL: URL)
         mutableURLRequest.HTTPMethod = "POST"
-        mutableURLRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
-    
         mutableURLRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
         var JSONSerializationError: NSError? = nil
         mutableURLRequest.setValue(access_token, forHTTPHeaderField: "Authorization")
