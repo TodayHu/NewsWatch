@@ -9,17 +9,31 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let feedlyPrefix = "http://sandbox.feedly.com/v3"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
         return true
     }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        // Override point for customization after application launch.
+        if (url.host == "oauth-callback") {
+            
+            if ( url.path!.hasPrefix("/feedly" )){
+                OAuth2Swift.handleOpenURL(url)
+            }
+        }
+        return true
+    }
+    
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -44,16 +58,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication!, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]!, reply: (([NSObject : AnyObject]!) -> Void)!) {
-        
-        //Alamofire.request(.GET, "http://jsonplaceholder.typicode.com/posts", parameters: nil).responseJSON{
-        Alamofire.request(.GET, "http://localhost:3000/tangos.json", parameters: nil).responseJSON{
-        //Alamofire.request(.GET, "https://whispering-oasis-5698.herokuapp.com/tangos.json", parameters: nil).responseJSON{
-            (request, response, JSONdata, error) in
-            var jsonResult = JSON(JSONdata!)
-            var result = ["data":jsonResult.rawValue]
-            reply(result)
+        let action = userInfo["action"] as String
+        if(action == "update"){
+            var streamRequest = FeedlyManager.sharedInstance.getFeedlyRequest("/streams/contents?streamId=user/" + FeedlyManager.sharedInstance.retrieveUserDefaultsWithKey(FeedlyManager.UserDefaultsKeys.userId) + "/category/global.all&unreadOnly=true")
+            Alamofire.request(streamRequest).responseJSON{ (request, response, JSONdata, error) in
+                var result:JSON = JSON(JSONdata!)
+                println(result)
+                var returnResult : [String:AnyObject] = ["data":result.rawValue]
+                reply(returnResult)
+            }
+        }else if(action == "markAsRead"){
+            var entries:Array = [userInfo["entryId"] as String]
+            var param = ["type":"entries","action":"markAsRead","entryIds":entries]
+            var markRequest = FeedlyManager.sharedInstance.postFeedlyRequest("/markers" , params: param)
+            
+            Alamofire.request(markRequest).responseJSON{ (request, response, JSONdata, error) in
+                var returnResult = ["response" : response?.statusCode as Int!]
+                reply(returnResult)
+            }
         }
     }
-
 }
 

@@ -8,9 +8,11 @@
 
 import WatchKit
 import Foundation
+import SwiftyJSON
 
 class ThirdInterfaceController: WKInterfaceController {
     @IBOutlet weak var label: WKInterfaceLabel!
+    @IBOutlet weak var publisherLabel: WKInterfaceLabel!
     
     override init() {
         
@@ -18,7 +20,9 @@ class ThirdInterfaceController: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        label.setText(context as? String)
+        var jsonResult = JSON(context!)
+        publisherLabel.setText(jsonResult["title"].string)
+        label.setText(jsonResult["content"]["content"].string)
     }
     
     func configureItems(){
@@ -35,10 +39,4 @@ class ThirdInterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
     
-    @IBAction func addButton() {
-        label.setText("add")
-    }
-    @IBAction func playButton() {
-        label.setText("play")
-    }
 }
