@@ -58,14 +58,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication!, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]!, reply: (([NSObject : AnyObject]!) -> Void)!) {
+        
+        // Check if the user has already had valid access token
+        if(!FeedlyManager.sharedInstance.isUserHasValidToken()){
+            returnErrorMessage(reply)
+        }
+        
         let action = userInfo["action"] as String
         if(action == "update"){
-            var streamRequest = FeedlyManager.sharedInstance.getFeedlyRequest("/streams/contents?streamId=user/" + FeedlyManager.sharedInstance.retrieveUserDefaultsWithKey(FeedlyManager.UserDefaultsKeys.userId) + "/category/global.all&unreadOnly=true")
-            Alamofire.request(streamRequest).responseJSON{ (request, response, JSONdata, error) in
-                var result:JSON = JSON(JSONdata!)
-                println(result)
-                var returnResult : [String:AnyObject] = ["data":result.rawValue]
-                reply(returnResult)
+            // Check if the userId has been logged in UserDefaults
+            if let userId = FeedlyManager.sharedInstance.retrieveUserDefaultsWithKey(FeedlyManager.UserDefaultsKeys.userId){
+                var streamRequest = FeedlyManager.sharedInstance.getFeedlyRequest("/streams/contents?streamId=user/" + userId + "/category/global.all&unreadOnly=true")
+                Alamofire.request(streamRequest).responseJSON{ (request, response, JSONdata, error) in
+                    var result:JSON = JSON(JSONdata!)
+                    println(result)
+                    var returnResult : [String:AnyObject] = ["response":"success","data":result.rawValue]
+                    reply(returnResult)
+                }
+            }else{
+                returnErrorMessage(reply)
             }
         }else if(action == "markAsRead"){
             var entries:Array = [userInfo["entryId"] as String]
@@ -77,6 +88,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 reply(returnResult)
             }
         }
+    }
+    
+    func returnErrorMessage(reply:(([NSObject : AnyObject]!) -> Void)){
+        var returnResult : [String:AnyObject] = ["response":"error"]
+        reply(returnResult)
     }
 }
 

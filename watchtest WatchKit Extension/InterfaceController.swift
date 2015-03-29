@@ -25,13 +25,29 @@ class InterfaceController: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        yesButton.setHidden(true)
+        noButton.setHidden(true)
+        mainTable.setHidden(true)
+        publisherLabel.setHidden(true)
         mainTable.setNumberOfRows(1, withRowType: "rowIdentifier")
         let dic = ["action":"update"]
         WKInterfaceController.openParentApplication(dic, reply: { (replyInfo, error) -> Void in
             let result = JSON (replyInfo)
             self.array = result
-            self.setNextTitle()
-            println(self.array)
+            // Check if it correctly pulls data
+            if(result["response"].string != "error"){
+                self.yesButton.setHidden(false)
+                self.noButton.setHidden(false)
+                self.mainTable.setHidden(false)
+                self.publisherLabel.setHidden(false)
+                self.setNextTitle()
+                println(self.array)
+            }else{
+                self.mainTable.setHidden(false)
+                let row = self.mainTable.rowControllerAtIndex(0) as MainRowType
+                row.mainLabel.setText("please launch iOS app in advance to sign-in")
+                println("error: user has not signed-in yet")
+            }
         })
     }
 
@@ -57,8 +73,6 @@ class InterfaceController: WKInterfaceController {
         let row = mainTable.rowControllerAtIndex(0) as MainRowType
         row.mainLabel.setText(self.array["data"]["items"][current]["title"].string)
         self.publisherLabel.setText(self.array["data"]["items"][current]["origin"]["title"].string)
-        
-        
     }
     
     func markAsRead(entryId:String){
@@ -75,6 +89,10 @@ class InterfaceController: WKInterfaceController {
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         println("tapped")
+        // Check if it correctly pulls data from service
+        if( array["response"].string == "error"){
+            return
+        }
         self.pushControllerWithName("DetailController", context: self.array["data"]["items"][current].rawValue)
     }
 

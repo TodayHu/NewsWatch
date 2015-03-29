@@ -49,9 +49,9 @@ class FeedlyManager {
         return mutableURLRequest
     }
     
-    func retrieveUserDefaultsWithKey(key:String) -> String {
+    func retrieveUserDefaultsWithKey(key:String) -> String? {
         let defaults = NSUserDefaults(suiteName: suiteName)
-        let value = defaults?.objectForKey(key) as String
+        let value = defaults?.objectForKey(key) as String?
         println("\(value) is retrieved")
         return value
     }
@@ -65,4 +65,12 @@ class FeedlyManager {
             println("The value \(value) is failed to save with the key \(key)")
         }
     }
+    
+    func isUserHasValidToken() -> Bool{
+        if let token = retrieveUserDefaultsWithKey(UserDefaultsKeys.access_token) {
+            return true
+        }
+        return false
+    }
+    
 }
