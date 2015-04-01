@@ -11,6 +11,7 @@ import Realm
 
 public class Item : RLMObject{
     public dynamic var id = ""
+    public dynamic var url = ""
     public dynamic var title = ""
     public dynamic var publisherName = ""
     public dynamic var content: String? = ""

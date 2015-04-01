@@ -97,11 +97,8 @@ class InterfaceController: WKInterfaceController {
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         println("tapped")
-        // Check if it correctly pulls data from service
-        if( array["response"].string == "error"){
-            return
-        }
-        //self.pushControllerWithName("DetailController", context: self.array["data"]["items"][current].rawValue)
+        let item = queryResult![current] as Item
+        self.pushControllerWithName("DetailController", context: item.id)
     }
 
 }

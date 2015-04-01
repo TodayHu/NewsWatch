@@ -19,16 +19,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        RLMRealm.setSchemaVersion(4, forRealmAtPath: RLMRealm.defaultRealmPath(),
-            withMigrationBlock: { migration, oldSchemaVersion in
-                // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if oldSchemaVersion < 4 {
-                    // Nothing to do!
-                    // Realm will automatically detect new properties and removed properties
-                    // And will update the schema on disk automatically
-                }
-        })
-        
         //println(LibFeedlyManager.sharedInstance.getItem().title)
         
     }
@@ -74,5 +64,8 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func alchemyTapped(sender: AnyObject) {
+        AlchemyManager.sharedInstance.getExtractedTextWithUrl("",nil)
+    }
 }
 

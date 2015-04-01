@@ -17,8 +17,6 @@ import Realm
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let feedlyPrefix = "http://sandbox.feedly.com/v3"
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         return true

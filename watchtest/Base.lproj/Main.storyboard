@@ -35,10 +35,21 @@
                                     <action selector="feedlyTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="F7B-rn-UUy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKs-hy-LYs">
+                                <rect key="frame" x="270" y="205" width="59" height="30"/>
+                                <state key="normal" title="Alchemy">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="alchemyTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="h8l-n6-G05"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Bqj-U3-XHW" firstAttribute="top" secondItem="4rn-Qt-zeo" secondAttribute="bottom" constant="100" id="0zp-ih-ILl"/>
+                            <constraint firstItem="Bqj-U3-XHW" firstAttribute="top" secondItem="WKs-hy-LYs" secondAttribute="bottom" constant="50" id="48T-SE-2RQ"/>
+                            <constraint firstAttribute="centerX" secondItem="WKs-hy-LYs" secondAttribute="centerX" id="BRB-jB-uGs"/>
                             <constraint firstAttribute="centerX" secondItem="Bqj-U3-XHW" secondAttribute="centerX" id="ZVo-Pc-DNs"/>
                             <constraint firstAttribute="centerY" secondItem="Bqj-U3-XHW" secondAttribute="centerY" id="q1u-sC-fwr"/>
                             <constraint firstAttribute="centerX" secondItem="4rn-Qt-zeo" secondAttribute="centerX" id="x7q-yP-0RU"/>

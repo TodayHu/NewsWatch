@@ -21,6 +21,20 @@ public class LibFeedlyManager {
         let container = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(suiteName)
         let realmUrl = container?.URLByAppendingPathComponent("default.realm")
         RLMRealm.setDefaultRealmPath(realmUrl?.path)
+        migration()
+    }
+    
+    func migration(){
+        RLMRealm.setSchemaVersion(2, forRealmAtPath: RLMRealm.defaultRealmPath(),
+            withMigrationBlock: { migration, oldSchemaVersion in
+                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                if oldSchemaVersion < 2 {
+                    println("migrated")
+                    // Nothing to do!
+                    // Realm will automatically detect new properties and removed properties
+                    // And will update the schema on disk automatically
+                }
+        })
     }
     
     public class var sharedInstance: LibFeedlyManager {
@@ -90,6 +104,7 @@ public class LibFeedlyManager {
             
             Alamofire.request(streamRequest).responseJSON{ (request, response, JSONdata, error) in
                 var result:JSON = JSON(JSONdata!)
+                println(result)
                 let numOfItem = result["items"].count
                 println("retrieved \(numOfItem) items")
                 var numOfSaved = 0
@@ -104,6 +119,7 @@ public class LibFeedlyManager {
                     }
                     
                     item.title = result["items"][i]["title"].string!
+                    item.url = result["items"][i]["originId"].string!
                     item.publisherName = result["items"][i]["origin"]["title"].string!
                     item.isUnread = true
                     item.publishedAt = result["items"][i]["published"].int!

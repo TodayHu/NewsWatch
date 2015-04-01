@@ -35,6 +35,8 @@
 		DF5854C21ABE827300655F5E /* MainRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5854C11ABE827300655F5E /* MainRowType.swift */; };
 		DF5854C41ABE87EF00655F5E /* ThirdInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5854C31ABE87EF00655F5E /* ThirdInterfaceController.swift */; };
 		DF825D6D1AC685B00030D326 /* FeedlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF825D6C1AC685B00030D326 /* FeedlyViewController.swift */; };
+		DF91E58B1ACC012300E96B15 /* AlchemyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF91E58A1ACC012300E96B15 /* AlchemyManager.swift */; };
+		DF91E58C1ACC013400E96B15 /* AlchemyManager.swift in Headers */ = {isa = PBXBuildFile; fileRef = DF91E58A1ACC012300E96B15 /* AlchemyManager.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF9D7F411AC7CE2400CF5637 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D7F401AC7CE2400CF5637 /* RLMSupport.swift */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +148,7 @@
 		DF825D6C1AC685B00030D326 /* FeedlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedlyViewController.swift; sourceTree = "<group>"; };
 		DF825D6E1AC6AF570030D326 /* watchtest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchtest.entitlements; sourceTree = "<group>"; };
 		DF825D6F1AC6AF950030D326 /* watchtest WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchtest WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		DF91E58A1ACC012300E96B15 /* AlchemyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlchemyManager.swift; sourceTree = "<group>"; };
 		DF9D7F401AC7CE2400CF5637 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		E70426CD88DD7D69D6D96142 /* Pods-watchtest WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchtest WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchtest WatchKit Extension/Pods-watchtest WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		F33BC79E7E103E0D08C0292F /* Pods_watchtest_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchtest_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +219,7 @@
 				DF3AB9F41AC8047D00E6D8C5 /* Supporting Files */,
 				DF3ABA131AC8057000E6D8C5 /* LibFeedlyManager.swift */,
 				DF3ABA151AC806F300E6D8C5 /* Item.swift */,
+				DF91E58A1ACC012300E96B15 /* AlchemyManager.swift */,
 			);
 			path = WatchExtensionEmbeddedLib;
 			sourceTree = "<group>";
@@ -373,6 +377,7 @@
 			files = (
 				DF3ABA171AC807F500E6D8C5 /* LibFeedlyManager.swift in Headers */,
 				DF3ABA181AC8134B00E6D8C5 /* Item.swift in Headers */,
+				DF91E58C1ACC013400E96B15 /* AlchemyManager.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +766,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF3ABA161AC806F300E6D8C5 /* Item.swift in Sources */,
+				DF91E58B1ACC012300E96B15 /* AlchemyManager.swift in Sources */,
 				DF3ABA141AC8057000E6D8C5 /* LibFeedlyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

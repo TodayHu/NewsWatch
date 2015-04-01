@@ -9,6 +9,8 @@
 import WatchKit
 import Foundation
 import SwiftyJSON
+import Realm
+import WatchExtensionEmbeddedLib
 
 class ThirdInterfaceController: WKInterfaceController {
     @IBOutlet weak var label: WKInterfaceLabel!
@@ -20,9 +22,15 @@ class ThirdInterfaceController: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        var jsonResult = JSON(context!)
-        publisherLabel.setText(jsonResult["title"].string)
-        label.setText(jsonResult["content"]["content"].string)
+        if let id = context as String? {
+            let realm = RLMRealm.defaultRealm()
+            let predicate = NSPredicate(format: "id = %@", id)
+            if let item = Item.objectsWithPredicate(predicate).firstObject() as Item? {
+                AlchemyManager.sharedInstance.getExtractedTextWithUrl(item.url, completion: { resultText in
+                    println(resultText)
+                })
+            }
+        }
     }
     
     func configureItems(){
