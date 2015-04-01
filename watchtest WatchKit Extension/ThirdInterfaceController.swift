@@ -15,6 +15,10 @@ import WatchExtensionEmbeddedLib
 class ThirdInterfaceController: WKInterfaceController {
     @IBOutlet weak var label: WKInterfaceLabel!
     @IBOutlet weak var publisherLabel: WKInterfaceLabel!
+    var arrayOfText:Array<String> = []
+    var current = 0
+    var timer: NSTimer!
+    let timerDuration: NSTimeInterval = 0.2
     
     override init() {
         
@@ -27,10 +31,19 @@ class ThirdInterfaceController: WKInterfaceController {
             let predicate = NSPredicate(format: "id = %@", id)
             if let item = Item.objectsWithPredicate(predicate).firstObject() as Item? {
                 AlchemyManager.sharedInstance.getExtractedTextWithUrl(item.url, completion: { resultText in
-                    println(resultText)
+                    self.arrayOfText = split(resultText) {$0 == " "}
+                    self.label.setText(self.arrayOfText[self.current])
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(self.timerDuration, target: self, selector: Selector("timerCalled"), userInfo: nil, repeats: true)
+                    self.timer.fire()
                 })
             }
         }
+    }
+    
+    func timerCalled(){
+        println("timerCalled")
+        current++
+        label.setText(self.arrayOfText[current])
     }
     
     func configureItems(){

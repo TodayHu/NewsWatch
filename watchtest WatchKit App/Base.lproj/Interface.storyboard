@@ -62,7 +62,9 @@
             <objects>
                 <controller identifier="DetailController" id="dHw-2U-UP4" customClass="ThirdInterfaceController" customModule="watchtest_WatchKit_Extension">
                     <items>
-                        <label width="1" alignment="center" verticalAlignment="center" text="Label" textAlignment="left" numberOfLines="10" id="4yk-Dj-9xo"/>
+                        <label width="1" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="4yk-Dj-9xo">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
                         <label alignment="right" text="Label" numberOfLines="2" id="Tci-AY-a9s">
                             <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
