@@ -22,6 +22,7 @@ class InterfaceController: WKInterfaceController {
     var array:JSON = nil
     var current:UInt = 0
     var queryResult:RLMResults?
+    var previousEntryId = ""
     
     override init() {
         
@@ -70,16 +71,16 @@ class InterfaceController: WKInterfaceController {
     func setNextTitle() {
         //Mark the entry as read if it's not first article
         if(current > 0){
-            let previousItem = queryResult![current] as Item
-            markAsRead(previousItem.id)
+            //let previousItem = queryResult![current-1] as Item
+            markAsRead(previousEntryId)
         }
-        
-        current++
         
         let row = self.mainTable.rowControllerAtIndex(0) as MainRowType
         let item = queryResult![current] as Item
         row.mainLabel.setText(item.title)
         publisherLabel.setText(item.publisherName)
+        previousEntryId = item.id
+        current++
     }
     
     func markAsRead(entryId:String){

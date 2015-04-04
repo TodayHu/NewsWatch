@@ -185,6 +185,8 @@ public class LibFeedlyManager {
             //let noNetworkErrorPtr = NSErrorPointer(
             completion?(error: noNetworkError)
         }
+        //let configuration = NSURLSessionConfiguration.backgroundSessionConfiguration("jp.ukay.watchtest")
+        //let manager = Alamofire.Manager(configuration: configuration)
         
         Alamofire.request(markRequest).responseJSON{ (request, response, JSONdata, error) in
             
@@ -209,14 +211,13 @@ public class LibFeedlyManager {
             }else{
                 
             }
-            
         }
-
         
     }
     
     public func getItems() -> RLMResults{
-        let items = Item.allObjects().sortedResultsUsingProperty("publishedAt", ascending: false)
+        let predicate = NSPredicate(format: "isUnread = true")
+        let items = Item.objectsWithPredicate(predicate).sortedResultsUsingProperty("publishedAt", ascending: false)
         return items
     }
     
