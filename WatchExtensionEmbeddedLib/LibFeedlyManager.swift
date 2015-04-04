@@ -24,9 +24,14 @@ public class LibFeedlyManager {
         case NoNetwork = "jp.ukay.network"
         case NoToken = "jp.ukay.auth"
     }
-    public enum networkError : Int{
+    public enum errorCode : Int{
         case NoNetwork
         case NoToken
+    }
+    
+    public enum errorMessage:String{
+        case NoNetwork = "No Network Reachability"
+        case NoToken = "No valid token. Please launch iOS app in advance to sign-in"
     }
     
     init(){
@@ -100,15 +105,15 @@ public class LibFeedlyManager {
     public func getNewItems(completion:((error:NSError?)->Void)?){
         
         if !IJReachability.isConnectedToNetwork(){
-            let errorDic = [NSLocalizedDescriptionKey:"No Network Error by library"]
-            var noNetworkError = NSError(domain: errorDomain.NoNetwork.rawValue, code: networkError.NoNetwork.rawValue, userInfo: errorDic)
+            let errorDic = [NSLocalizedDescriptionKey:errorMessage.NoNetwork.rawValue]
+            var noNetworkError = NSError(domain: errorDomain.NoNetwork.rawValue, code: errorCode.NoNetwork.rawValue, userInfo: errorDic)
             //let noNetworkErrorPtr = NSErrorPointer(
             completion?(error: noNetworkError)
         }
         
         if let userId = self.retrieveUserDefaultsWithKey(UserDefaultsKeys.userId){
             
-            var requestUrl = "/streams/contents?streamId=user/" + userId + "/category/global.all&unreadOnly=true"
+            var requestUrl = "/streams/contents?streamId=user/" + userId + "/category/global.all&unreadOnly=true&count=100"
             if let items = Item.allObjects() {
                 if(items.count>0){
                     let latestItem = items.sortedResultsUsingProperty("publishedAt", ascending: false)[0] as? Item
@@ -162,11 +167,52 @@ public class LibFeedlyManager {
                 completion?(error: nil)
             }
         }else{
-            let errorDic = [NSLocalizedDescriptionKey:"please launch iOS app in advance to sign-in"]
-            var noNetworkError = NSError(domain: errorDomain.NoToken.rawValue, code: networkError.NoToken.rawValue, userInfo: errorDic)
+            let errorDic = [NSLocalizedDescriptionKey:errorMessage.NoNetwork.rawValue]
+            var noNetworkError = NSError(domain: errorDomain.NoToken.rawValue, code: errorCode.NoToken.rawValue, userInfo: errorDic)
             //let noNetworkErrorPtr = NSErrorPointer(
             completion?(error: noNetworkError)
         }
+    }
+    
+    public func makeEntryAsRead(entryId:String,completion:((error:NSError?)->Void)?){
+        var entries:Array = [entryId]
+        var param = ["type":"entries","action":"markAsRead","entryIds":entries]
+        var markRequest = self.postFeedlyRequest("/markers" , params: param)
+        
+        if !IJReachability.isConnectedToNetwork(){
+            let errorDic = [NSLocalizedDescriptionKey:errorMessage.NoNetwork.rawValue]
+            var noNetworkError = NSError(domain: errorDomain.NoNetwork.rawValue, code: errorCode.NoNetwork.rawValue, userInfo: errorDic)
+            //let noNetworkErrorPtr = NSErrorPointer(
+            completion?(error: noNetworkError)
+        }
+        
+        Alamofire.request(markRequest).responseJSON{ (request, response, JSONdata, error) in
+            
+            //if we got error
+            if let error = error{
+                completion?(error: error)
+                return
+            }
+            
+            var returnResult = ["response" : response?.statusCode as Int!]
+            if(response?.statusCode == 200){
+                
+                let predicate = NSPredicate(format: "id = %@", entryId)
+                if(Item.objectsWithPredicate(predicate).count != 0){
+                    let item = Item.objectsWithPredicate(predicate).firstObject() as Item!
+                    let realm = RLMRealm.defaultRealm()
+                    realm.beginWriteTransaction()
+                    item.isUnread = false
+                    realm.commitWriteTransaction()
+                }
+                completion?(error: nil)
+            }else{
+                
+            }
+            
+        }
+
+        
     }
     
     public func getItems() -> RLMResults{

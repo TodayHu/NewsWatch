@@ -40,5 +40,4 @@ class FeedlyViewController: OAuthWebViewController, UIWebViewDelegate{
             dismissViewControllerAnimated(true, completion: nil)
         }
     }
-    
 }

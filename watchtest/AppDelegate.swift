@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         return
                     }else if error.domain == LibFeedlyManager.errorDomain.NoToken.rawValue{
                         self.returnErrorMessage(reply, errorMessage: error.localizedDescription)
+                        return
                     }
                 }
                 
@@ -77,27 +78,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 reply(returnResult)
             })
         }else if(action == "markAsRead"){
-            let entry = userInfo["entryId"] as String
-            var entries:Array = [entry]
-            var param = ["type":"entries","action":"markAsRead","entryIds":entries]
-            var markRequest = LibFeedlyManager.sharedInstance.postFeedlyRequest("/markers" , params: param)
-            
-            Alamofire.request(markRequest).responseJSON{ (request, response, JSONdata, error) in
-                var returnResult = ["response" : response?.statusCode as Int!]
-                if(response?.statusCode == 200){
-                    
-                    let predicate = NSPredicate(format: "id = %@", entry)
-                    if(Item.objectsWithPredicate(predicate).count != 0){
-                        let item = Item.objectsWithPredicate(predicate).firstObject() as Item!
-                        let realm = RLMRealm.defaultRealm()
-                        realm.beginWriteTransaction()
-                        item.isUnread = false
-                        realm.commitWriteTransaction()
+            let entryId = userInfo["entryId"] as String
+            LibFeedlyManager.sharedInstance.makeEntryAsRead(entryId, { _error in
+                if let error = _error {
+                    if error.domain == LibFeedlyManager.errorDomain.NoNetwork.rawValue{
+                        self.returnWarningMessage(reply, warningMessage: error.localizedDescription)
+                        return
+                    }else if error.domain == LibFeedlyManager.errorDomain.NoToken.rawValue{
+                        self.returnErrorMessage(reply, errorMessage: error.localizedDescription)
+                        return
                     }
                 }
                 
+                var returnResult = ["response" : "success","message": "\(entryId) is marked as read"]
                 reply(returnResult)
-            }
+
+            })
+            
         }
     }
     
