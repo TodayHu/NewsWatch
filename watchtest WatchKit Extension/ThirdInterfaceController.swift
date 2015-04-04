@@ -20,8 +20,10 @@ class ThirdInterfaceController: WKInterfaceController {
     
     var arrayOfText:Array<String> = []
     var current = 0
+    var entryId:String = ""
     var timer: NSTimer?
     let timerDuration: NSTimeInterval = 0.2
+    
     
     override init() {
         
@@ -33,6 +35,7 @@ class ThirdInterfaceController: WKInterfaceController {
         label.setText("")
         
         if let id = context as String? {
+            entryId = id
             let realm = RLMRealm.defaultRealm()
             let predicate = NSPredicate(format: "id = %@", id)
             if let item = Item.objectsWithPredicate(predicate).firstObject() as Item? {
@@ -54,6 +57,14 @@ class ThirdInterfaceController: WKInterfaceController {
         }else{
             timer = NSTimer.scheduledTimerWithTimeInterval(self.timerDuration, target: self, selector: Selector("timerCalled"), userInfo: nil, repeats: true)
             actionButton.setTitle("Stop")
+        }
+    }
+    @IBAction func saveTapped() {
+        LibFeedlyManager.sharedInstance.addEntryToReadingList(entryId)
+        if let _timer = timer {
+            _timer.invalidate()
+            timer = nil
+            actionButton.setTitle("Play")
         }
     }
     

@@ -14,7 +14,7 @@
                             <items>
                                 <button width="0.50000000000000011" alignment="left" title="Save" id="Ne4-Vl-2g4">
                                     <connections>
-                                        <action selector="yesButtonTapped" destination="AgC-eL-Hgc" id="doA-sK-UlU"/>
+                                        <action selector="saveTapped" destination="AgC-eL-Hgc" id="RHF-Ri-zfY"/>
                                     </connections>
                                 </button>
                                 <button width="0.50000000000000011" alignment="left" title="Next" id="WuW-cP-nGa">
@@ -76,7 +76,11 @@
                                         <action selector="actionTapped" destination="dHw-2U-UP4" id="yxR-ZW-NDy"/>
                                     </connections>
                                 </button>
-                                <button width="0.50000000000000011" alignment="left" verticalAlignment="bottom" title="Save" id="11p-xo-ZkG"/>
+                                <button width="0.50000000000000011" alignment="left" verticalAlignment="bottom" title="Save" id="11p-xo-ZkG">
+                                    <connections>
+                                        <action selector="saveTapped" destination="dHw-2U-UP4" id="9NO-6E-BOn"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>

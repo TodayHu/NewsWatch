@@ -11,12 +11,11 @@ import Alamofire
 import SwiftyJSON
 import Realm
 import IJReachability
+import SafariServices
 
 private let _FeedlyManagerSharedInstance = LibFeedlyManager()
 private let feedlyPrefix = "http://sandbox.feedly.com/v3"
 private let suiteName = "group.jp.ukai.watchtest"
-
-
 
 public class LibFeedlyManager {
     
@@ -234,6 +233,23 @@ public class LibFeedlyManager {
             return true
         }
         return false
+    }
+    
+    public func addEntryToReadingList(entryId:String){
+        let predicate = NSPredicate(format: "id = %@", entryId)
+        if let item = Item.objectsWithPredicate(predicate).firstObject() as Item? {
+            var error : NSError?
+            
+            AlchemyManager.sharedInstance.getExtractedTextWithUrl(item.url , completion: { resultText in
+                if (SSReadingList.defaultReadingList().addReadingListItemWithURL(NSURL(string:item.url), title: item.title, previewText: resultText, error: &error)){
+                    println("\(item.title) is properly added")
+                }else{
+                    println("Fail to add")
+                }
+            })
+            
+        }
+        
     }
     
 }

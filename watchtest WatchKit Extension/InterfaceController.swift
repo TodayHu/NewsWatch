@@ -96,10 +96,12 @@ class InterfaceController: WKInterfaceController {
         setNextTitle()
     }
     
+    @IBAction func saveTapped() {
+        LibFeedlyManager.sharedInstance.addEntryToReadingList(previousEntryId)
+    }
+    
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        println("tapped")
-        let item = queryResult![current] as Item
-        self.pushControllerWithName("DetailController", context: item.id)
+        self.pushControllerWithName("DetailController", context: previousEntryId)
     }
 
 }
