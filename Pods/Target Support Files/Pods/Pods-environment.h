@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_Alamofire 1
 #define COCOAPODS_VERSION_PATCH_Alamofire 4
 
+// IJReachability
+#define COCOAPODS_POD_AVAILABLE_IJReachability
+#define COCOAPODS_VERSION_MAJOR_IJReachability 0
+#define COCOAPODS_VERSION_MINOR_IJReachability 1
+#define COCOAPODS_VERSION_PATCH_IJReachability 0
+
 // OAuthSwift
 #define COCOAPODS_POD_AVAILABLE_OAuthSwift
 #define COCOAPODS_VERSION_MAJOR_OAuthSwift 0

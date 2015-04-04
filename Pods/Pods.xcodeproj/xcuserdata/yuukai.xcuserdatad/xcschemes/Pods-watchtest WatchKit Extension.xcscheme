@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E90278E5AACF1330CDA9F851"
+               BlueprintIdentifier = "1B511D7382C9090430CD5A95"
                BuildableName = "Pods_watchtest_WatchKit_Extension.framework"
                BlueprintName = "Pods-watchtest WatchKit Extension"
                ReferencedContainer = "container:Pods.xcodeproj">

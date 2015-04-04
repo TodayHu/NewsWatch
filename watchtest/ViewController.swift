@@ -51,7 +51,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func syncTapped(sender: AnyObject) {
-        LibFeedlyManager.sharedInstance.getNewItems(nil)
+        LibFeedlyManager.sharedInstance.getNewItems({ _error in
+            println(_error)
+        })
     }
     
     func getProfile(){

@@ -12,6 +12,7 @@ import SwiftyJSON
 import Realm
 import WatchExtensionEmbeddedLib
 
+
 class InterfaceController: WKInterfaceController {
 
     @IBOutlet weak var yesButton: WKInterfaceButton!
@@ -50,8 +51,7 @@ class InterfaceController: WKInterfaceController {
             }else{
                 self.mainTable.setHidden(false)
                 let row = self.mainTable.rowControllerAtIndex(0) as MainRowType
-                row.mainLabel.setText("please launch iOS app in advance to sign-in")
-                println("error: user has not signed-in yet")
+                row.mainLabel.setText(result["message"].string)
             }
         })
     }

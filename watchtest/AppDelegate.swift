@@ -57,29 +57,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]!, reply: (([NSObject : AnyObject]!) -> Void)!) {
         // Called when WatchKit application invokes
         // Check if the user has already had valid access token
-        if(!LibFeedlyManager.sharedInstance.isUserHasValidToken()){
-            returnErrorMessage(reply)
-        }
+        /*if(!LibFeedlyManager.sharedInstance.isUserHasValidToken()){
+        
+        }*/
         
         let action = userInfo["action"] as String
         if(action == "update"){
-            LibFeedlyManager.sharedInstance.getNewItems({ message in
+            LibFeedlyManager.sharedInstance.getNewItems({ _error in
+                if let error = _error {
+                    if error.domain == LibFeedlyManager.errorDomain.NoNetwork.rawValue{
+                        self.returnWarningMessage(reply, warningMessage: error.localizedDescription)
+                        return
+                    }else if error.domain == LibFeedlyManager.errorDomain.NoToken.rawValue{
+                        self.returnErrorMessage(reply, errorMessage: error.localizedDescription)
+                    }
+                }
+                
                 var returnResult = ["response" : "success"]
                 reply(returnResult)
             })
-            
-            // Check if the userId has been logged in UserDefaults
-            /*if let userId = FeedlyManager.sharedInstance.retrieveUserDefaultsWithKey(FeedlyManager.UserDefaultsKeys.userId){
-                var streamRequest = FeedlyManager.sharedInstance.getFeedlyRequest("/streams/contents?streamId=user/" + userId + "/category/global.all&unreadOnly=true")
-                Alamofire.request(streamRequest).responseJSON{ (request, response, JSONdata, error) in
-                    var result:JSON = JSON(JSONdata!)
-                    println(result)
-                    var returnResult : [String:AnyObject] = ["response":"success","data":result.rawValue]
-                    reply(returnResult)
-                }
-            }else{
-                returnErrorMessage(reply)
-            }*/
         }else if(action == "markAsRead"){
             let entry = userInfo["entryId"] as String
             var entries:Array = [entry]
@@ -105,8 +101,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func returnErrorMessage(reply:(([NSObject : AnyObject]!) -> Void)){
-        var returnResult : [String:AnyObject] = ["response":"error"]
+    func returnWarningMessage(reply:(([NSObject : AnyObject]!) -> Void), warningMessage : String){
+        var returnResult : [String:AnyObject] = ["response":"warning","message":warningMessage]
+        reply(returnResult)
+    }
+    
+    func returnErrorMessage(reply:(([NSObject : AnyObject]!) -> Void), errorMessage : String){
+        var returnResult : [String:AnyObject] = ["response":"error","message":errorMessage]
         reply(returnResult)
     }
 }

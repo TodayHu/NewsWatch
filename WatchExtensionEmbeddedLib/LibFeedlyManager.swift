@@ -10,12 +10,24 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import Realm
+import IJReachability
 
 private let _FeedlyManagerSharedInstance = LibFeedlyManager()
 private let feedlyPrefix = "http://sandbox.feedly.com/v3"
 private let suiteName = "group.jp.ukai.watchtest"
 
+
+
 public class LibFeedlyManager {
+    
+    public enum errorDomain:String{
+        case NoNetwork = "jp.ukay.network"
+        case NoToken = "jp.ukay.auth"
+    }
+    public enum networkError : Int{
+        case NoNetwork
+        case NoToken
+    }
     
     init(){
         let container = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(suiteName)
@@ -85,7 +97,15 @@ public class LibFeedlyManager {
         return value
     }
     
-    public func getNewItems(completion:((String)->Void)?){
+    public func getNewItems(completion:((error:NSError?)->Void)?){
+        
+        if !IJReachability.isConnectedToNetwork(){
+            let errorDic = [NSLocalizedDescriptionKey:"No Network Error by library"]
+            var noNetworkError = NSError(domain: errorDomain.NoNetwork.rawValue, code: networkError.NoNetwork.rawValue, userInfo: errorDic)
+            //let noNetworkErrorPtr = NSErrorPointer(
+            completion?(error: noNetworkError)
+        }
+        
         if let userId = self.retrieveUserDefaultsWithKey(UserDefaultsKeys.userId){
             
             var requestUrl = "/streams/contents?streamId=user/" + userId + "/category/global.all&unreadOnly=true"
@@ -103,6 +123,12 @@ public class LibFeedlyManager {
             let realm = RLMRealm.defaultRealm()
             
             Alamofire.request(streamRequest).responseJSON{ (request, response, JSONdata, error) in
+                //if we got error
+                if let error = error{
+                    completion?(error: error)
+                    return
+                }
+                
                 var result:JSON = JSON(JSONdata!)
                 println(result)
                 let numOfItem = result["items"].count
@@ -133,10 +159,13 @@ public class LibFeedlyManager {
                     numOfSaved++
                 }
                 println("saved \(numOfSaved) items")
-                completion?("retrieved \(numOfItem) items saved \(numOfSaved) items")
+                completion?(error: nil)
             }
         }else{
-            
+            let errorDic = [NSLocalizedDescriptionKey:"please launch iOS app in advance to sign-in"]
+            var noNetworkError = NSError(domain: errorDomain.NoToken.rawValue, code: networkError.NoToken.rawValue, userInfo: errorDic)
+            //let noNetworkErrorPtr = NSErrorPointer(
+            completion?(error: noNetworkError)
         }
     }
     
