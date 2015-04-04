@@ -15,9 +15,12 @@ import WatchExtensionEmbeddedLib
 class ThirdInterfaceController: WKInterfaceController {
     @IBOutlet weak var label: WKInterfaceLabel!
     @IBOutlet weak var publisherLabel: WKInterfaceLabel!
+    @IBOutlet weak var actionButton: WKInterfaceButton!
+    
+    
     var arrayOfText:Array<String> = []
     var current = 0
-    var timer: NSTimer!
+    var timer: NSTimer?
     let timerDuration: NSTimeInterval = 0.2
     
     override init() {
@@ -26,6 +29,9 @@ class ThirdInterfaceController: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        
+        label.setText("")
+        
         if let id = context as String? {
             let realm = RLMRealm.defaultRealm()
             let predicate = NSPredicate(format: "id = %@", id)
@@ -33,17 +39,28 @@ class ThirdInterfaceController: WKInterfaceController {
                 AlchemyManager.sharedInstance.getExtractedTextWithUrl(item.url, completion: { resultText in
                     self.arrayOfText = split(resultText) {$0 == " "}
                     self.label.setText(self.arrayOfText[self.current])
-                    self.timer = NSTimer.scheduledTimerWithTimeInterval(self.timerDuration, target: self, selector: Selector("timerCalled"), userInfo: nil, repeats: true)
-                    self.timer.fire()
+                    
+                    
                 })
             }
         }
     }
     
+    @IBAction func actionTapped() {
+        if let _timer = timer {
+            _timer.invalidate()
+            timer = nil
+            actionButton.setTitle("Play")
+        }else{
+            timer = NSTimer.scheduledTimerWithTimeInterval(self.timerDuration, target: self, selector: Selector("timerCalled"), userInfo: nil, repeats: true)
+            actionButton.setTitle("Stop")
+        }
+    }
+    
     func timerCalled(){
-        println("timerCalled")
         current++
         label.setText(self.arrayOfText[current])
+        println("timerCalled \(current)")
     }
     
     func configureItems(){

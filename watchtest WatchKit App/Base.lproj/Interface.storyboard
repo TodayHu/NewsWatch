@@ -69,6 +69,16 @@
                             <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                         </label>
+                        <group width="1" alignment="left" verticalAlignment="bottom" id="DEs-vK-WtK">
+                            <items>
+                                <button width="0.50000000000000011" alignment="right" verticalAlignment="bottom" title="Play" id="gIS-51-ktf">
+                                    <connections>
+                                        <action selector="actionTapped" destination="dHw-2U-UP4" id="yxR-ZW-NDy"/>
+                                    </connections>
+                                </button>
+                                <button width="0.50000000000000011" alignment="left" verticalAlignment="bottom" title="Save" id="11p-xo-ZkG"/>
+                            </items>
+                        </group>
                     </items>
                     <menu key="menu" id="uzD-yv-R1Y">
                         <items>
@@ -85,12 +95,13 @@
                         </items>
                     </menu>
                     <connections>
+                        <outlet property="actionButton" destination="gIS-51-ktf" id="8qd-68-haW"/>
                         <outlet property="label" destination="4yk-Dj-9xo" id="wN6-4E-aSE"/>
                         <outlet property="publisherLabel" destination="Tci-AY-a9s" id="SkU-Ew-rTB"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="653" y="382"/>
+            <point key="canvasLocation" x="479" y="378"/>
         </scene>
     </scenes>
 </document>

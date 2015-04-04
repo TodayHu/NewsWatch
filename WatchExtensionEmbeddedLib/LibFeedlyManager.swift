@@ -185,9 +185,7 @@ public class LibFeedlyManager {
             //let noNetworkErrorPtr = NSErrorPointer(
             completion?(error: noNetworkError)
         }
-        //let configuration = NSURLSessionConfiguration.backgroundSessionConfiguration("jp.ukay.watchtest")
-        //let manager = Alamofire.Manager(configuration: configuration)
-        
+
         Alamofire.request(markRequest).responseJSON{ (request, response, JSONdata, error) in
             
             //if we got error
