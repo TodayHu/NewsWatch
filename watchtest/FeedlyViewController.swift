@@ -13,6 +13,8 @@ import SwiftyJSON
 
 class FeedlyViewController: OAuthWebViewController, UIWebViewDelegate{
     @IBOutlet weak var webView: UIWebView!
+    let heightOfNavigationBar:CGFloat = 44
+    
     var authUrl:NSURL?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,28 @@ class FeedlyViewController: OAuthWebViewController, UIWebViewDelegate{
         webView.loadRequest(NSURLRequest(URL: authUrl!))
         webView.delegate = self
         println("viewDidLoad()")
+        
+        let heightOfStatusBar = UIApplication.sharedApplication().statusBarFrame.size.height
+        var navigationBar = UINavigationBar(frame: CGRect(origin: CGPointZero, size: CGSize(width: self.view.frame.size.width,height: heightOfNavigationBar + heightOfStatusBar)))
+        let closeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: Selector("closeTapped:"))
+        var navigationItem = UINavigationItem(title: "Sign in with feedly")
+        navigationItem.rightBarButtonItem = closeBarButton
+        navigationBar.items = [navigationItem]
+        view.addSubview(navigationBar)
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let heightOfStatusBar = UIApplication.sharedApplication().statusBarFrame.size.height
+        var frame = webView.frame
+        frame.origin.y += heightOfNavigationBar + heightOfStatusBar
+        frame.size.height -= heightOfNavigationBar + heightOfStatusBar
+        webView.frame = frame
+    }
+    
+    func closeTapped(sender:UIBarButtonItem){
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

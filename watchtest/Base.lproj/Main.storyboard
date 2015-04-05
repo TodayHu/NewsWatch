@@ -109,13 +109,16 @@
                             <constraint firstItem="Ntc-YK-9jT" firstAttribute="top" secondItem="0aR-68-Psq" secondAttribute="topMargin" id="ygx-Wd-4Jv"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="80M-yI-Omr">
+                        <barButtonItem key="rightBarButtonItem" title="Close" id="gPg-u8-gwu"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="webView" destination="Ntc-YK-9jT" id="k2B-SB-OBQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oq9-Lo-g7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="981" y="370"/>
+            <point key="canvasLocation" x="1793" y="370"/>
         </scene>
     </scenes>
     <resources>

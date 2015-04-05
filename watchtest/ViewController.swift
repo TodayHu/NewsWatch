@@ -36,7 +36,6 @@ class ViewController: UIViewController {
     func feedlyTapped() {
         let mystoryboard = UIStoryboard(name: "Main", bundle: nil)
         var webController = mystoryboard.instantiateViewControllerWithIdentifier("webView")
-
         
         let oauthswift = OAuth2Swift(
             consumerKey:    "sandbox",
