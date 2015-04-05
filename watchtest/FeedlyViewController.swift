@@ -61,7 +61,13 @@ class FeedlyViewController: OAuthWebViewController, UIWebViewDelegate{
             let nc = NSNotificationCenter.defaultCenter()
             var userInfo = ["OAuthSwiftCallbackNotificationOptionsURLKey" : webView.request!.URL]
             nc.postNotificationName("OAuthSwiftCallbackNotificationName", object: self, userInfo: userInfo)
-            dismissViewControllerAnimated(true, completion: nil)
+            
+            //Update the presenting view
+            let presentingView:ViewController = self.presentingViewController as ViewController
+            presentingView.updateViewAfterSignedIn()
+            dismissViewControllerAnimated(true, completion: {
+                
+            })
         }
     }
 }

@@ -58,6 +58,11 @@ class ViewController: UIViewController {
         feedlyTapped()
     }
     
+    func updateViewAfterSignedIn(){
+            signInView.hidden = true
+            logoImageView.hidden = true
+    }
+    
     /*
     @IBAction func syncTapped(sender: AnyObject) {
         LibFeedlyManager.sharedInstance.getNewItems({ _error in
