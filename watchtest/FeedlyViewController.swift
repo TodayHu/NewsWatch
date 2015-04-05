@@ -55,7 +55,12 @@ class FeedlyViewController: OAuthWebViewController, UIWebViewDelegate{
         authUrl = url
     }
     
+    func webViewDidStartLoad(webView: UIWebView) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
     func webViewDidFinishLoad(webView: UIWebView) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         if((webView.request?.URL.absoluteString?.hasPrefix("http://localhost")) == true){
             println("webViewDidFinishLoad: \(webView.request!)")
             let nc = NSNotificationCenter.defaultCenter()
