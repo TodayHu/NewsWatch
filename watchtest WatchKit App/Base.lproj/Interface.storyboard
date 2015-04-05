@@ -65,7 +65,7 @@
                         <label width="1" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="4yk-Dj-9xo">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
-                        <label alignment="right" text="Label" numberOfLines="2" id="Tci-AY-a9s">
+                        <label height="17" alignment="right" text="Label" numberOfLines="2" id="Tci-AY-a9s">
                             <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                         </label>
@@ -86,14 +86,9 @@
                     </items>
                     <menu key="menu" id="uzD-yv-R1Y">
                         <items>
-                            <menuItem title="Add" icon="add" id="bFp-cw-6uG">
+                            <menuItem title="Setting" icon="info" id="bFp-cw-6uG">
                                 <connections>
-                                    <action selector="addButton" destination="dHw-2U-UP4" id="ucE-Lm-g3b"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Play" icon="play" id="yRP-m8-v4x">
-                                <connections>
-                                    <action selector="playButton" destination="dHw-2U-UP4" id="gNW-5l-NUT"/>
+                                    <action selector="settingTapped" destination="dHw-2U-UP4" id="jTM-qa-d1b"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -101,11 +96,42 @@
                     <connections>
                         <outlet property="actionButton" destination="gIS-51-ktf" id="8qd-68-haW"/>
                         <outlet property="label" destination="4yk-Dj-9xo" id="wN6-4E-aSE"/>
-                        <outlet property="publisherLabel" destination="Tci-AY-a9s" id="SkU-Ew-rTB"/>
+                        <outlet property="wpmLabel" destination="Tci-AY-a9s" id="6jo-al-hbE"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="479" y="378"/>
+        </scene>
+        <!--SettingController-->
+        <scene sceneID="pAv-db-TVB">
+            <objects>
+                <controller identifier="SettingController" id="cSv-nk-XUO" customClass="SettingInterfaceController" customModule="watchtest_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" text="Label" id="Mcl-PO-EEq"/>
+                        <label alignment="right" verticalAlignment="bottom" text="Label" id="cSg-Q9-UV3">
+                            <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <slider width="1" alignment="left" verticalAlignment="bottom" value="200" minimum="100" maximum="700" steps="12" id="Jsz-V8-kLb">
+                            <connections>
+                                <action selector="sliderChanged:" destination="cSv-nk-XUO" id="EYW-Pz-C15"/>
+                            </connections>
+                        </slider>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Play" id="52Q-NS-VH4">
+                            <connections>
+                                <action selector="actionButtonTapped" destination="cSv-nk-XUO" id="r6i-0g-yNP"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="actionButton" destination="52Q-NS-VH4" id="9nU-Wm-JKD"/>
+                        <outlet property="mainLabel" destination="Mcl-PO-EEq" id="Ba4-2i-RSG"/>
+                        <outlet property="slider" destination="Jsz-V8-kLb" id="2eW-Bc-geQ"/>
+                        <outlet property="wpmLabel" destination="cSg-Q9-UV3" id="vPQ-hI-2xT"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="673" y="373"/>
         </scene>
     </scenes>
 </document>

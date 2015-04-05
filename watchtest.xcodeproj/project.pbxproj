@@ -38,6 +38,7 @@
 		DF91E58B1ACC012300E96B15 /* AlchemyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF91E58A1ACC012300E96B15 /* AlchemyManager.swift */; };
 		DF91E58C1ACC013400E96B15 /* AlchemyManager.swift in Headers */ = {isa = PBXBuildFile; fileRef = DF91E58A1ACC012300E96B15 /* AlchemyManager.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF9D7F411AC7CE2400CF5637 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D7F401AC7CE2400CF5637 /* RLMSupport.swift */; };
+		DFB27A5C1ACFF8E5001D0333 /* SettingInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB27A5B1ACFF8E5001D0333 /* SettingInterfaceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		DF825D6F1AC6AF950030D326 /* watchtest WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchtest WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		DF91E58A1ACC012300E96B15 /* AlchemyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlchemyManager.swift; sourceTree = "<group>"; };
 		DF9D7F401AC7CE2400CF5637 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
+		DFB27A5B1ACFF8E5001D0333 /* SettingInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingInterfaceController.swift; sourceTree = "<group>"; };
 		E70426CD88DD7D69D6D96142 /* Pods-watchtest WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchtest WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchtest WatchKit Extension/Pods-watchtest WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		F33BC79E7E103E0D08C0292F /* Pods_watchtest_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchtest_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F556A675D51D67DBCDA35093 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -327,6 +329,7 @@
 				DF4337B01ABE5E370082B0CB /* Supporting Files */,
 				DF5854C11ABE827300655F5E /* MainRowType.swift */,
 				DF5854C31ABE87EF00655F5E /* ThirdInterfaceController.swift */,
+				DFB27A5B1ACFF8E5001D0333 /* SettingInterfaceController.swift */,
 			);
 			path = "watchtest WatchKit Extension";
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB27A5C1ACFF8E5001D0333 /* SettingInterfaceController.swift in Sources */,
 				DF4337B31ABE5E370082B0CB /* InterfaceController.swift in Sources */,
 				DF5854C41ABE87EF00655F5E /* ThirdInterfaceController.swift in Sources */,
 				DF5854C21ABE827300655F5E /* MainRowType.swift in Sources */,

@@ -14,13 +14,18 @@ import Realm
 import WatchExtensionEmbeddedLib
 
 class ViewController: UIViewController {
+    @IBOutlet weak var logoImageView: UIImageView!
 
+    @IBOutlet weak var signInView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        //println(LibFeedlyManager.sharedInstance.getItem().title)
-        
+        if LibFeedlyManager.sharedInstance.isUserHasValidToken(){
+            signInView.hidden = true
+            logoImageView.hidden = true
+        }else{
+            signInView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("signInTapped:")))
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,11 +33,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func feedlyTapped(sender: AnyObject) {
-    
+    func feedlyTapped() {
         let mystoryboard = UIStoryboard(name: "Main", bundle: nil)
         var webController = mystoryboard.instantiateViewControllerWithIdentifier("webView")
 
+        
         let oauthswift = OAuth2Swift(
             consumerKey:    "sandbox",
             consumerSecret: "4205DQXBAP99S8SUHXI3",
@@ -44,12 +49,17 @@ class ViewController: UIViewController {
         oauthswift.authorizeWithCallbackURL( NSURL(string: "http://localhost")!, scope: "https://cloud.feedly.com/subscriptions", state: "Feedly", success: {
                 credential, response in
             LibFeedlyManager.sharedInstance.saveUserDefaultsWithKey(LibFeedlyManager.UserDefaultsKeys.access_token, value: credential.oauth_token)
-                self.getProfile()
+                //self.getProfile()
                 }, failure: { error in
                     println("error")
             })
     }
-
+    
+    @IBAction func signInTapped(recognizer:UITapGestureRecognizer){
+        feedlyTapped()
+    }
+    
+    /*
     @IBAction func syncTapped(sender: AnyObject) {
         LibFeedlyManager.sharedInstance.getNewItems({ _error in
             println(_error)
@@ -69,5 +79,6 @@ class ViewController: UIViewController {
     @IBAction func alchemyTapped(sender: AnyObject) {
         AlchemyManager.sharedInstance.getExtractedTextWithUrl("",nil)
     }
+*/
 }
 

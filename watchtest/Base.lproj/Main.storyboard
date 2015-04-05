@@ -14,47 +14,72 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqj-U3-XHW">
-                                <rect key="frame" x="282" y="285" width="35" height="30"/>
-                                <state key="normal" title="Sync">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="syncTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="626-Au-46x"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rn-Qt-zeo">
-                                <rect key="frame" x="277" y="155" width="46" height="30"/>
-                                <state key="normal" title="Feedly">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="feedlyTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="F7B-rn-UUy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKs-hy-LYs">
-                                <rect key="frame" x="270" y="205" width="59" height="30"/>
-                                <state key="normal" title="Alchemy">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="alchemyTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="h8l-n6-G05"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="WatchFace" translatesAutoresizingMaskIntoConstraints="NO" id="GVR-yd-hY1">
+                                <rect key="frame" x="68" y="59" width="184" height="322"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="322" id="3NU-fX-fY2"/>
+                                    <constraint firstAttribute="width" constant="184" id="SPB-Ql-Ttq"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4T-L0-vzG">
+                                <rect key="frame" x="78" y="411" width="164" height="21"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sign in with feedly" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmz-kQ-1Ob">
+                                        <rect key="frame" x="24" y="0.0" width="140" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.16078431372549021" green="0.67843137254901964" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="feedlyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="eXb-Rq-asa">
+                                        <rect key="frame" x="0.0" y="2" width="20" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="7YN-Fq-NrT"/>
+                                            <constraint firstAttribute="width" constant="20" id="Gdm-Uh-lyV"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="86b-Nk-Qxh"/>
+                                    <constraint firstAttribute="centerY" secondItem="Rmz-kQ-1Ob" secondAttribute="centerY" id="DGo-vi-dCy"/>
+                                    <constraint firstAttribute="width" constant="164" id="DZm-gi-50z"/>
+                                    <constraint firstAttribute="centerY" secondItem="eXb-Rq-asa" secondAttribute="centerY" id="Daa-yc-gbb"/>
+                                    <constraint firstItem="eXb-Rq-asa" firstAttribute="leading" secondItem="f4T-L0-vzG" secondAttribute="leading" id="EyV-Jm-La5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rmz-kQ-1Ob" secondAttribute="trailing" id="SNz-xH-MnL"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="logos" translatesAutoresizingMaskIntoConstraints="NO" id="pQm-Hw-NyU">
+                                <rect key="frame" x="92" y="442" width="136" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="136" id="8G7-KX-33P"/>
+                                    <constraint firstAttribute="height" constant="20" id="x3e-i2-Qxf"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Bqj-U3-XHW" firstAttribute="top" secondItem="4rn-Qt-zeo" secondAttribute="bottom" constant="100" id="0zp-ih-ILl"/>
-                            <constraint firstItem="Bqj-U3-XHW" firstAttribute="top" secondItem="WKs-hy-LYs" secondAttribute="bottom" constant="50" id="48T-SE-2RQ"/>
-                            <constraint firstAttribute="centerX" secondItem="WKs-hy-LYs" secondAttribute="centerX" id="BRB-jB-uGs"/>
-                            <constraint firstAttribute="centerX" secondItem="Bqj-U3-XHW" secondAttribute="centerX" id="ZVo-Pc-DNs"/>
-                            <constraint firstAttribute="centerY" secondItem="Bqj-U3-XHW" secondAttribute="centerY" id="q1u-sC-fwr"/>
-                            <constraint firstAttribute="centerX" secondItem="4rn-Qt-zeo" secondAttribute="centerX" id="x7q-yP-0RU"/>
+                            <constraint firstItem="pQm-Hw-NyU" firstAttribute="top" secondItem="f4T-L0-vzG" secondAttribute="bottom" constant="10" id="8ow-NX-nEz"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="pQm-Hw-NyU" secondAttribute="bottom" constant="30" id="HX3-ci-l8k"/>
+                            <constraint firstItem="f4T-L0-vzG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GVR-yd-hY1" secondAttribute="bottom" constant="10" id="IZN-PO-K3f"/>
+                            <constraint firstAttribute="centerX" secondItem="f4T-L0-vzG" secondAttribute="centerX" id="ThE-qQ-dQI"/>
+                            <constraint firstAttribute="centerX" secondItem="GVR-yd-hY1" secondAttribute="centerX" id="eN0-Mf-xUX"/>
+                            <constraint firstAttribute="centerY" secondItem="GVR-yd-hY1" secondAttribute="centerY" id="m7B-bU-5yZ"/>
+                            <constraint firstAttribute="centerX" secondItem="pQm-Hw-NyU" secondAttribute="centerX" id="zEa-v2-8zz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HX3-ci-l8k"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="logoImageView" destination="pQm-Hw-NyU" id="Pm3-Ga-HLu"/>
+                        <outlet property="signInView" destination="f4T-L0-vzG" id="zGU-Ph-XFO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,4 +118,9 @@
             <point key="canvasLocation" x="981" y="370"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="WatchFace" width="368" height="645"/>
+        <image name="feedlyLogo" width="38" height="33"/>
+        <image name="logos" width="274" height="42"/>
+    </resources>
 </document>

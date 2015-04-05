@@ -94,13 +94,6 @@ public class LibFeedlyManager {
         return mutableURLRequest
     }
     
-    public func retrieveUserDefaultsWithKey(key:String) -> String? {
-        let defaults = NSUserDefaults(suiteName: suiteName)
-        let value = defaults?.objectForKey(key) as String?
-        println("\(value) is retrieved")
-        return value
-    }
-    
     public func getNewItems(completion:((error:NSError?)->Void)?){
         
         if !IJReachability.isConnectedToNetwork(){
@@ -226,6 +219,13 @@ public class LibFeedlyManager {
         }else{
             println("The value \(value) is failed to save with the key \(key)")
         }
+    }
+    
+    public func retrieveUserDefaultsWithKey(key:String) -> String? {
+        let defaults = NSUserDefaults(suiteName: suiteName)
+        let value = defaults?.objectForKey(key) as String?
+        println("\(value) is retrieved")
+        return value
     }
     
     public func isUserHasValidToken() -> Bool{

@@ -14,7 +14,8 @@ import WatchExtensionEmbeddedLib
 
 class ThirdInterfaceController: WKInterfaceController {
     @IBOutlet weak var label: WKInterfaceLabel!
-    @IBOutlet weak var publisherLabel: WKInterfaceLabel!
+    
+    @IBOutlet weak var wpmLabel: WKInterfaceLabel!
     @IBOutlet weak var actionButton: WKInterfaceButton!
     
     
@@ -22,7 +23,7 @@ class ThirdInterfaceController: WKInterfaceController {
     var current = 0
     var entryId:String = ""
     var timer: NSTimer?
-    let timerDuration: NSTimeInterval = 0.2
+    var timerDuration: NSTimeInterval = 0.2
     
     
     override init() {
@@ -31,6 +32,7 @@ class ThirdInterfaceController: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        setWPM()
         
         label.setText("")
         
@@ -78,6 +80,11 @@ class ThirdInterfaceController: WKInterfaceController {
 
     }
     
+    func setWPM(){
+        let value = 60.0/timerDuration
+        wpmLabel.setText("\(value)WPM")
+    }
+    
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
@@ -88,4 +95,7 @@ class ThirdInterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
     
+    @IBAction func settingTapped() {
+        self.presentControllerWithName("SettingController", context: nil)
+    }
 }
