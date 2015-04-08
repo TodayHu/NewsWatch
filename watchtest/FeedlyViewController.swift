@@ -69,7 +69,7 @@ class FeedlyViewController: OAuthWebViewController, UIWebViewDelegate{
             
             //Update the presenting view
             let presentingView:ViewController = self.presentingViewController as ViewController
-            presentingView.updateViewAfterSignedIn()
+            presentingView.doAfterSignedIn()
             dismissViewControllerAnimated(true, completion: {
                 
             })

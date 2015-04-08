@@ -39,6 +39,8 @@
 		DF91E58C1ACC013400E96B15 /* AlchemyManager.swift in Headers */ = {isa = PBXBuildFile; fileRef = DF91E58A1ACC012300E96B15 /* AlchemyManager.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF9D7F411AC7CE2400CF5637 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D7F401AC7CE2400CF5637 /* RLMSupport.swift */; };
 		DFB27A5C1ACFF8E5001D0333 /* SettingInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB27A5B1ACFF8E5001D0333 /* SettingInterfaceController.swift */; };
+		DFB27A5E1AD0ECC8001D0333 /* SpeedReadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB27A5D1AD0ECC8001D0333 /* SpeedReadingManager.swift */; };
+		DFB27A5F1AD0EDCF001D0333 /* SpeedReadingManager.swift in Headers */ = {isa = PBXBuildFile; fileRef = DFB27A5D1AD0ECC8001D0333 /* SpeedReadingManager.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +154,7 @@
 		DF91E58A1ACC012300E96B15 /* AlchemyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlchemyManager.swift; sourceTree = "<group>"; };
 		DF9D7F401AC7CE2400CF5637 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		DFB27A5B1ACFF8E5001D0333 /* SettingInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingInterfaceController.swift; sourceTree = "<group>"; };
+		DFB27A5D1AD0ECC8001D0333 /* SpeedReadingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedReadingManager.swift; sourceTree = "<group>"; };
 		E70426CD88DD7D69D6D96142 /* Pods-watchtest WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchtest WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchtest WatchKit Extension/Pods-watchtest WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		F33BC79E7E103E0D08C0292F /* Pods_watchtest_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchtest_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F556A675D51D67DBCDA35093 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +221,7 @@
 		DF3AB9F31AC8047D00E6D8C5 /* WatchExtensionEmbeddedLib */ = {
 			isa = PBXGroup;
 			children = (
+				DFB27A5D1AD0ECC8001D0333 /* SpeedReadingManager.swift */,
 				DF3AB9F41AC8047D00E6D8C5 /* Supporting Files */,
 				DF3ABA131AC8057000E6D8C5 /* LibFeedlyManager.swift */,
 				DF3ABA151AC806F300E6D8C5 /* Item.swift */,
@@ -379,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF3ABA171AC807F500E6D8C5 /* LibFeedlyManager.swift in Headers */,
+				DFB27A5F1AD0EDCF001D0333 /* SpeedReadingManager.swift in Headers */,
 				DF3ABA181AC8134B00E6D8C5 /* Item.swift in Headers */,
 				DF91E58C1ACC013400E96B15 /* AlchemyManager.swift in Headers */,
 			);
@@ -770,6 +775,7 @@
 			files = (
 				DF3ABA161AC806F300E6D8C5 /* Item.swift in Sources */,
 				DF91E58B1ACC012300E96B15 /* AlchemyManager.swift in Sources */,
+				DFB27A5E1AD0ECC8001D0333 /* SpeedReadingManager.swift in Sources */,
 				DF3ABA141AC8057000E6D8C5 /* LibFeedlyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

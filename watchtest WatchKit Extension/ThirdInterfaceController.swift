@@ -30,6 +30,8 @@ class ThirdInterfaceController: WKInterfaceController {
         
     }
     
+    //EntryId is given as String from InterfaceController
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         setWPM()
@@ -37,17 +39,13 @@ class ThirdInterfaceController: WKInterfaceController {
         label.setText("")
         
         if let id = context as String? {
-            entryId = id
-            let realm = RLMRealm.defaultRealm()
-            let predicate = NSPredicate(format: "id = %@", id)
-            if let item = Item.objectsWithPredicate(predicate).firstObject() as Item? {
-                AlchemyManager.sharedInstance.getExtractedTextWithUrl(item.url, completion: { resultText in
-                    self.arrayOfText = split(resultText) {$0 == " "}
-                    self.label.setText(self.arrayOfText[self.current])
-                    
-                    
-                })
-            }
+            let dic = ["action":"getContent","entryId":id]
+            WKInterfaceController.openParentApplication(dic, reply: { (replyInfo, error) -> Void in
+                let result = JSON (replyInfo)
+                println(result)
+                self.arrayOfText =  result["data"].rawValue as Array<String>
+                self.label.setText(self.arrayOfText[self.current])
+            })
         }
     }
     

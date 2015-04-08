@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         }else{
             signInView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("signInTapped:")))
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
         oauthswift.authorizeWithCallbackURL( NSURL(string: "http://localhost")!, scope: "https://cloud.feedly.com/subscriptions", state: "Feedly", success: {
                 credential, response in
             LibFeedlyManager.sharedInstance.saveUserDefaultsWithKey(LibFeedlyManager.UserDefaultsKeys.access_token, value: credential.oauth_token)
-                //self.getProfile()
+                LibFeedlyManager.sharedInstance.getProfile()
                 }, failure: { error in
                     println("error")
             })
@@ -58,9 +59,9 @@ class ViewController: UIViewController {
         feedlyTapped()
     }
     
-    func updateViewAfterSignedIn(){
-            signInView.hidden = true
-            logoImageView.hidden = true
+    func doAfterSignedIn(){
+        signInView.hidden = true
+        logoImageView.hidden = true
     }
     
     /*
@@ -70,15 +71,7 @@ class ViewController: UIViewController {
         })
     }
     
-    func getProfile(){
-        let request = LibFeedlyManager.sharedInstance.getFeedlyRequest("/profile")
-        
-        Alamofire.request(request).responseJSON{
-            (request, response, JSONdata, error) in
-            var result = JSON(JSONdata!)
-            LibFeedlyManager.sharedInstance.saveUserDefaultsWithKey(LibFeedlyManager.UserDefaultsKeys.userId, value: result["id"].string!)
-        }
-    }
+    
 
     @IBAction func alchemyTapped(sender: AnyObject) {
         AlchemyManager.sharedInstance.getExtractedTextWithUrl("",nil)

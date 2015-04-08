@@ -103,63 +103,67 @@ public class LibFeedlyManager {
             completion?(error: noNetworkError)
         }
         
-        if let userId = self.retrieveUserDefaultsWithKey(UserDefaultsKeys.userId){
+        if isUserHasValidToken(){
+            if let userId = self.retrieveUserDefaultsWithKey(UserDefaultsKeys.userId){
             
-            var requestUrl = "/streams/contents?streamId=user/" + userId + "/category/global.all&unreadOnly=true&count=100"
-            if let items = Item.allObjects() {
-                if(items.count>0){
-                    let latestItem = items.sortedResultsUsingProperty("publishedAt", ascending: false)[0] as? Item
-                    let newerThan = "&newerThan=" + String(latestItem!.publishedAt + 1)
-                    requestUrl += newerThan
+                var requestUrl = "/streams/contents?streamId=user/" + userId + "/category/global.all&unreadOnly=true&count=100"
+                if let items = Item.allObjects() {
+                    if(items.count>0){
+                        let latestItem = items.sortedResultsUsingProperty("publishedAt", ascending: false)[0] as? Item
+                        let newerThan = "&newerThan=" + String(latestItem!.publishedAt + 1)
+                        requestUrl += newerThan
+                    }
                 }
-            }
-            println("requesturl: \(requestUrl)")
-            var streamRequest = getFeedlyRequest(requestUrl)
+                println("requesturl: \(requestUrl)")
+                var streamRequest = getFeedlyRequest(requestUrl)
             
-            // Get the default Realm
-            let realm = RLMRealm.defaultRealm()
+                // Get the default Realm
+                let realm = RLMRealm.defaultRealm()
             
-            Alamofire.request(streamRequest).responseJSON{ (request, response, JSONdata, error) in
+                Alamofire.request(streamRequest).responseJSON{ (request, response, JSONdata, error) in
                 //if we got error
-                if let error = error{
-                    completion?(error: error)
-                    return
-                }
+                    if let error = error{
+                        completion?(error: error)
+                        return
+                    }
                 
-                var result:JSON = JSON(JSONdata!)
-                println(result)
-                let numOfItem = result["items"].count
-                println("retrieved \(numOfItem) items")
-                var numOfSaved = 0
-                for var i = 0 ; i < result["items"].count; i++ {
-                    let item = Item()
-                    item.id = result["items"][i]["id"].string!
+                    var result:JSON = JSON(JSONdata!)
+                    println(result)
+                    let numOfItem = result["items"].count
+                    println("retrieved \(numOfItem) items")
+                    var numOfSaved = 0
+                    for var i = 0 ; i < result["items"].count; i++ {
+                        let item = Item()
+                        item.id = result["items"][i]["id"].string!
                     
-                    //Check if the item has been saved
-                    let predicate = NSPredicate(format: "id = %@", item.id)
-                    if(Item.objectsWithPredicate(predicate).count != 0){
-                        break
-                    }
+                        //Check if the item has been saved
+                        let predicate = NSPredicate(format: "id = %@", item.id)
+                        if(Item.objectsWithPredicate(predicate).count != 0){
+                            break
+                        }
                     
-                    item.title = result["items"][i]["title"].string!
-                    item.url = result["items"][i]["originId"].string!
-                    item.publisherName = result["items"][i]["origin"]["title"].string!
-                    item.isUnread = true
-                    item.publishedAt = result["items"][i]["published"].int!
-                    if let content = result["items"][i]["content"]["content"].string {
-                        item.content = content
+                        item.title = result["items"][i]["title"].string!
+                        item.url = result["items"][i]["originId"].string!
+                        item.publisherName = result["items"][i]["origin"]["title"].string!
+                        item.isUnread = true
+                        item.publishedAt = result["items"][i]["published"].int!
+                        if let content = result["items"][i]["content"]["content"].string {
+                            item.content = content
+                        }
+                        // Add to the Realm inside a transaction
+                        realm.beginWriteTransaction()
+                        realm.addObject(item)
+                        realm.commitWriteTransaction()
+                        numOfSaved++
                     }
-                    // Add to the Realm inside a transaction
-                    realm.beginWriteTransaction()
-                    realm.addObject(item)
-                    realm.commitWriteTransaction()
-                    numOfSaved++
+                    println("saved \(numOfSaved) items")
+                    completion?(error: nil)
                 }
-                println("saved \(numOfSaved) items")
-                completion?(error: nil)
+            }else{
+                
             }
         }else{
-            let errorDic = [NSLocalizedDescriptionKey:errorMessage.NoNetwork.rawValue]
+            let errorDic = [NSLocalizedDescriptionKey:errorMessage.NoToken.rawValue]
             var noNetworkError = NSError(domain: errorDomain.NoToken.rawValue, code: errorCode.NoToken.rawValue, userInfo: errorDic)
             //let noNetworkErrorPtr = NSErrorPointer(
             completion?(error: noNetworkError)
@@ -250,6 +254,18 @@ public class LibFeedlyManager {
             
         }
         
+    }
+    
+    public func getProfile(){
+        let request = self.getFeedlyRequest("/profile")
+        
+        Alamofire.request(request).responseJSON{
+            (request, response, JSONdata, error) in
+            var result = JSON(JSONdata!)
+            println(result)
+            println(request)
+            self.saveUserDefaultsWithKey(UserDefaultsKeys.userId, value: result["id"].string!)
+        }
     }
     
 }
