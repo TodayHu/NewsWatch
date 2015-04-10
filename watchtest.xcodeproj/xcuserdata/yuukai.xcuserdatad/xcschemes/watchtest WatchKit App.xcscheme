@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DF4337841ABE5DEE0082B0CB"
-               BuildableName = "watchtest.app"
-               BlueprintName = "watchtest"
+               BuildableName = "Feetch.app"
+               BlueprintName = "Feetch"
                ReferencedContainer = "container:watchtest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

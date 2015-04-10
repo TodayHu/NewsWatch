@@ -10,6 +10,7 @@ import Foundation
 import Realm
 
 public class SpeedReadingManager{
+    
     public class func convertStringToArray(entryId:String, completion:((error:NSError?, result:Array<String>)->Void)?){
         var array:Array<String> = []
         var text:NSString = ""

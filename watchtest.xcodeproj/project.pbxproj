@@ -128,7 +128,7 @@
 		DF3ABA051AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchExtensionEmbeddedLibTests.swift; sourceTree = "<group>"; };
 		DF3ABA131AC8057000E6D8C5 /* LibFeedlyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibFeedlyManager.swift; sourceTree = "<group>"; };
 		DF3ABA151AC806F300E6D8C5 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		DF4337851ABE5DEE0082B0CB /* watchtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF4337851ABE5DEE0082B0CB /* Feetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feetch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF4337891ABE5DEE0082B0CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF43378A1ABE5DEE0082B0CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF43378C1ABE5DEE0082B0CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 		DF4337861ABE5DEE0082B0CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DF4337851ABE5DEE0082B0CB /* watchtest.app */,
+				DF4337851ABE5DEE0082B0CB /* Feetch.app */,
 				DF43379A1ABE5DEE0082B0CB /* watchtestTests.xctest */,
 				DF4337AE1ABE5E370082B0CB /* watchtest WatchKit Extension.appex */,
 				DF4337B81ABE5E370082B0CB /* watchtest WatchKit App.app */,
@@ -432,9 +432,9 @@
 			productReference = DF3AB9FC1AC8047D00E6D8C5 /* WatchExtensionEmbeddedLibTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		DF4337841ABE5DEE0082B0CB /* watchtest */ = {
+		DF4337841ABE5DEE0082B0CB /* Feetch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DF4337A41ABE5DEE0082B0CB /* Build configuration list for PBXNativeTarget "watchtest" */;
+			buildConfigurationList = DF4337A41ABE5DEE0082B0CB /* Build configuration list for PBXNativeTarget "Feetch" */;
 			buildPhases = (
 				453947909DD4CED851D60C32 /* Check Pods Manifest.lock */,
 				DF4337811ABE5DEE0082B0CB /* Sources */,
@@ -451,9 +451,9 @@
 				DF4337C51ABE5E370082B0CB /* PBXTargetDependency */,
 				DF3ABA081AC8047D00E6D8C5 /* PBXTargetDependency */,
 			);
-			name = watchtest;
+			name = Feetch;
 			productName = watchtest;
-			productReference = DF4337851ABE5DEE0082B0CB /* watchtest.app */;
+			productReference = DF4337851ABE5DEE0082B0CB /* Feetch.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DF4337991ABE5DEE0082B0CB /* watchtestTests */ = {
@@ -567,7 +567,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DF4337841ABE5DEE0082B0CB /* watchtest */,
+				DF4337841ABE5DEE0082B0CB /* Feetch */,
 				DF4337991ABE5DEE0082B0CB /* watchtestTests */,
 				DF4337AD1ABE5E370082B0CB /* watchtest WatchKit Extension */,
 				DF4337B71ABE5E370082B0CB /* watchtest WatchKit App */,
@@ -828,7 +828,7 @@
 		};
 		DF3ABA011AC8047D00E6D8C5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DF4337841ABE5DEE0082B0CB /* watchtest */;
+			target = DF4337841ABE5DEE0082B0CB /* Feetch */;
 			targetProxy = DF3ABA001AC8047D00E6D8C5 /* PBXContainerItemProxy */;
 		};
 		DF3ABA081AC8047D00E6D8C5 /* PBXTargetDependency */ = {
@@ -838,7 +838,7 @@
 		};
 		DF43379C1ABE5DEE0082B0CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DF4337841ABE5DEE0082B0CB /* watchtest */;
+			target = DF4337841ABE5DEE0082B0CB /* Feetch */;
 			targetProxy = DF43379B1ABE5DEE0082B0CB /* PBXContainerItemProxy */;
 		};
 		DF4337BB1ABE5E370082B0CB /* PBXTargetDependency */ = {
@@ -1203,7 +1203,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DF4337A41ABE5DEE0082B0CB /* Build configuration list for PBXNativeTarget "watchtest" */ = {
+		DF4337A41ABE5DEE0082B0CB /* Build configuration list for PBXNativeTarget "Feetch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DF4337A51ABE5DEE0082B0CB /* Debug */,
