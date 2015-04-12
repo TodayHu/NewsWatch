@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         }*/
         
-        let action = userInfo["action"] as String
+        let action = userInfo["action"] as! String
         if(action == "update"){
             LibFeedlyManager.sharedInstance.getNewItems({ _error in
                 if let error = _error {
@@ -78,8 +78,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 reply(returnResult)
             })
         }else if(action == "markAsRead"){
-            let entryId = userInfo["entryId"] as String
-            LibFeedlyManager.sharedInstance.makeEntryAsRead(entryId, { _error in
+            let entryId = userInfo["entryId"] as! String
+            LibFeedlyManager.sharedInstance.makeEntryAsRead(entryId, completion: { _error in
                 if let error = _error {
                     if error.domain == LibFeedlyManager.errorDomain.NoNetwork.rawValue{
                         self.returnWarningMessage(reply, warningMessage: error.localizedDescription)
@@ -96,12 +96,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             
         }else if(action == "getContent"){
-            let entryId = userInfo["entryId"] as String
-            SpeedReadingManager.convertStringToArray(entryId, { _error, _result in
+            let entryId = userInfo["entryId"] as! String
+            SpeedReadingManager.convertStringToArray(entryId, completion: { _error, _result in
                 let resultArray = _result as Array<String>
                 let resultDic = ["response" : "success","data":resultArray]
                 println(resultDic)
-                reply(resultDic)
+                reply(resultDic as [NSObject : AnyObject])
             })
         }
     }

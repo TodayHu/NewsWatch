@@ -12,12 +12,21 @@ import SwiftyJSON
 import Realm
 import IJReachability
 import SafariServices
+import KeychainAccess
 
 private let _FeedlyManagerSharedInstance = LibFeedlyManager()
 private let feedlyPrefix = "http://sandbox.feedly.com/v3"
 private let suiteName = "group.jp.ukai.watchtest"
 
 public class LibFeedlyManager {
+    
+    public struct UserDefaultsKeys {
+        public static let userId = "userId"
+    }
+    
+    public struct KeychainKeys{
+        public static let access_token = "access_token"
+    }
     
     public enum errorDomain:String{
         case NoNetwork = "jp.ukay.network"
@@ -57,17 +66,12 @@ public class LibFeedlyManager {
         return _FeedlyManagerSharedInstance
     }
     
-    public struct UserDefaultsKeys {
-        public static let access_token = "access_token"
-        public static let userId = "userId"
-    }
-    
     public func getFeedlyRequest(url: String) -> NSMutableURLRequest {
         return getFeedlyRequestWithParams(url, params: nil)
     }
     
     public func getFeedlyRequestWithParams(url: String, params:NSDictionary?) -> NSMutableURLRequest{
-        let access_token = retrieveUserDefaultsWithKey(UserDefaultsKeys.access_token)
+        let access_token = retrieveKeychainWithKey(KeychainKeys.access_token)
         
         let URL = NSURL(string: feedlyPrefix + url)!
         let mutableURLRequest = NSMutableURLRequest(URL: URL)
@@ -82,7 +86,7 @@ public class LibFeedlyManager {
     }
     
     public func postFeedlyRequest(url: String, params:NSDictionary) -> NSMutableURLRequest {
-        let access_token = retrieveUserDefaultsWithKey(UserDefaultsKeys.access_token)
+        let access_token = retrieveKeychainWithKey(KeychainKeys.access_token)
         
         let URL = NSURL(string: feedlyPrefix + url)!
         let mutableURLRequest = NSMutableURLRequest(URL: URL)
@@ -195,7 +199,7 @@ public class LibFeedlyManager {
                 
                 let predicate = NSPredicate(format: "id = %@", entryId)
                 if(Item.objectsWithPredicate(predicate).count != 0){
-                    let item = Item.objectsWithPredicate(predicate).firstObject() as Item!
+                    let item = Item.objectsWithPredicate(predicate).firstObject() as! Item!
                     let realm = RLMRealm.defaultRealm()
                     realm.beginWriteTransaction()
                     item.isUnread = false
@@ -225,15 +229,25 @@ public class LibFeedlyManager {
         }
     }
     
+    public func saveKeychainWithKey(key: String, value: String){
+        let keychain = Keychain(service: suiteName)
+        keychain[key] = value
+    }
+    
+    public func retrieveKeychainWithKey(key: String) -> String?{
+        let keychain = Keychain(service: suiteName)
+        return keychain[key]
+    }
+    
     public func retrieveUserDefaultsWithKey(key:String) -> String? {
         let defaults = NSUserDefaults(suiteName: suiteName)
-        let value = defaults?.objectForKey(key) as String?
+        let value = defaults?.objectForKey(key) as! String?
         println("\(value) is retrieved")
         return value
     }
     
     public func isUserHasValidToken() -> Bool{
-        if let token = retrieveUserDefaultsWithKey(UserDefaultsKeys.access_token) {
+        if let access_token = retrieveKeychainWithKey(KeychainKeys.access_token) {
             return true
         }
         return false
@@ -241,7 +255,7 @@ public class LibFeedlyManager {
     
     public func addEntryToReadingList(entryId:String){
         let predicate = NSPredicate(format: "id = %@", entryId)
-        if let item = Item.objectsWithPredicate(predicate).firstObject() as Item? {
+        if let item = Item.objectsWithPredicate(predicate).firstObject() as! Item? {
             var error : NSError?
             
             AlchemyManager.sharedInstance.getExtractedTextWithUrl(item.url , completion: { resultText in

@@ -38,6 +38,7 @@ class InterfaceController: WKInterfaceController {
         let dic = ["action":"update"]
         WKInterfaceController.openParentApplication(dic, reply: { (replyInfo, error) -> Void in
             let result = JSON (replyInfo)
+            println(result)
             self.array = result
             // Check if it correctly pulls data
             if(result["response"].string != "error"){
@@ -46,12 +47,13 @@ class InterfaceController: WKInterfaceController {
                 self.mainTable.setHidden(false)
                 self.publisherLabel.setHidden(false)
                 self.queryResult = LibFeedlyManager.sharedInstance.getItems()
+                println("count:\(self.queryResult?.count)")
                 self.setNextTitle()
                 
                 println(self.array)
             }else{
                 self.mainTable.setHidden(false)
-                let row = self.mainTable.rowControllerAtIndex(0) as MainRowType
+                let row = self.mainTable.rowControllerAtIndex(0) as! MainRowType
                 row.mainLabel.setText(result["message"].string)
             }
         })
@@ -75,8 +77,8 @@ class InterfaceController: WKInterfaceController {
             markAsRead(previousEntryId)
         }
         
-        let row = self.mainTable.rowControllerAtIndex(0) as MainRowType
-        let item = queryResult![current] as Item
+        let row = self.mainTable.rowControllerAtIndex(0) as! MainRowType
+        let item = queryResult![current] as! Item
         row.mainLabel.setText(item.title)
         publisherLabel.setText(item.publisherName)
         previousEntryId = item.id

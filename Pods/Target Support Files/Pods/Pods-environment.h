@@ -9,8 +9,8 @@
 // Alamofire
 #define COCOAPODS_POD_AVAILABLE_Alamofire
 #define COCOAPODS_VERSION_MAJOR_Alamofire 1
-#define COCOAPODS_VERSION_MINOR_Alamofire 1
-#define COCOAPODS_VERSION_PATCH_Alamofire 4
+#define COCOAPODS_VERSION_MINOR_Alamofire 2
+#define COCOAPODS_VERSION_PATCH_Alamofire 0
 
 // IJReachability
 #define COCOAPODS_POD_AVAILABLE_IJReachability
@@ -22,7 +22,7 @@
 #define COCOAPODS_POD_AVAILABLE_OAuthSwift
 #define COCOAPODS_VERSION_MAJOR_OAuthSwift 0
 #define COCOAPODS_VERSION_MINOR_OAuthSwift 3
-#define COCOAPODS_VERSION_PATCH_OAuthSwift 2
+#define COCOAPODS_VERSION_PATCH_OAuthSwift 3
 
 // Realm
 #define COCOAPODS_POD_AVAILABLE_Realm

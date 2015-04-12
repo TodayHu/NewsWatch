@@ -16,7 +16,7 @@ public class SpeedReadingManager{
         var text:NSString = ""
         let realm = RLMRealm.defaultRealm()
         let predicate = NSPredicate(format: "id = %@", entryId)
-        if let item = Item.objectsWithPredicate(predicate).firstObject() as Item? {
+        if let item = Item.objectsWithPredicate(predicate).firstObject() as! Item? {
             
             let lang = getLanguage(item.title)
             
@@ -25,7 +25,7 @@ public class SpeedReadingManager{
                 let schemes = [NSLinguisticTagSchemeLexicalClass]
                 let options = NSLinguisticTaggerOptions.OmitWhitespace | NSLinguisticTaggerOptions.JoinNames
                 let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
-                tagger.string = text
+                tagger.string = text as String
                 let textRange = NSMakeRange(0, text.length-1)
   
                 tagger.enumerateTagsInRange(textRange, scheme: NSLinguisticTagSchemeLexicalClass, options: options, usingBlock:{ (tag:String!, tokenRange:NSRange, _, _) -> Void in
@@ -46,7 +46,7 @@ public class SpeedReadingManager{
         let schemes = [NSLinguisticTagSchemeLanguage]
         let options = NSLinguisticTaggerOptions.OmitWhitespace | NSLinguisticTaggerOptions.OmitPunctuation | NSLinguisticTaggerOptions.OmitOther
         let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
-        tagger.string = text
+        tagger.string = text as String
         let textRange = NSMakeRange(0, (text.length-1 >= 10 ? 10 : text.length-1))
         var countDic = Dictionary<String, Int>()
         tagger.enumerateTagsInRange(textRange, scheme: NSLinguisticTagSchemeLanguage, options: options, usingBlock:{ (tag:String!, tokenRange:NSRange, _, _) -> Void in

@@ -35,7 +35,7 @@ class SettingInterfaceController: WKInterfaceController {
         
         let defaults = NSUserDefaults(suiteName: suiteName)
         var wpm = 0
-        if let value = defaults?.objectForKey("wpm") as Int? {
+        if let value = defaults?.objectForKey("wpm") as! Int? {
             wpm = value
         }else{
             defaults?.setObject(defaultWpm, forKey: "wpm")

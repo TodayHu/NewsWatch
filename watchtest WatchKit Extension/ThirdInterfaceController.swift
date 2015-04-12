@@ -38,12 +38,12 @@ class ThirdInterfaceController: WKInterfaceController {
         
         label.setText("")
         
-        if let id = context as String? {
+        if let id = context as! String? {
             let dic = ["action":"getContent","entryId":id]
             WKInterfaceController.openParentApplication(dic, reply: { (replyInfo, error) -> Void in
                 let result = JSON (replyInfo)
                 println(result)
-                self.arrayOfText =  result["data"].rawValue as Array<String>
+                self.arrayOfText =  result["data"].rawValue as! Array<String>
                 self.label.setText(self.arrayOfText[self.current])
             })
         }

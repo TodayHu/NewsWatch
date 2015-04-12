@@ -45,10 +45,11 @@ class ViewController: UIViewController {
             accessTokenUrl: "http://sandbox.feedly.com/v3/auth/token",
             responseType:   "code"
         )
-        oauthswift.webViewController = webController! as FeedlyViewController
+        oauthswift.webViewController = webController! as! FeedlyViewController
         oauthswift.authorizeWithCallbackURL( NSURL(string: "http://localhost")!, scope: "https://cloud.feedly.com/subscriptions", state: "Feedly", success: {
                 credential, response in
-            LibFeedlyManager.sharedInstance.saveUserDefaultsWithKey(LibFeedlyManager.UserDefaultsKeys.access_token, value: credential.oauth_token)
+            //Save the given token to KeyChain
+            LibFeedlyManager.sharedInstance.saveKeychainWithKey(LibFeedlyManager.KeychainKeys.access_token, value: credential.oauth_token)
                 LibFeedlyManager.sharedInstance.getProfile()
                 }, failure: { error in
                     println("error")

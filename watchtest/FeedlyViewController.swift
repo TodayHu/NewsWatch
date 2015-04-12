@@ -61,14 +61,14 @@ class FeedlyViewController: OAuthWebViewController, UIWebViewDelegate{
     
     func webViewDidFinishLoad(webView: UIWebView) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        if((webView.request?.URL.absoluteString?.hasPrefix("http://localhost")) == true){
+        if((webView.request?.URL!.absoluteString?.hasPrefix("http://localhost")) == true){
             println("webViewDidFinishLoad: \(webView.request!)")
             let nc = NSNotificationCenter.defaultCenter()
-            var userInfo = ["OAuthSwiftCallbackNotificationOptionsURLKey" : webView.request!.URL]
-            nc.postNotificationName("OAuthSwiftCallbackNotificationName", object: self, userInfo: userInfo)
-            
+            var userInfo = ["OAuthSwiftCallbackNotificationOptionsURLKey" as NSString : webView.request!.URL!] as [NSObject:AnyObject]
+            nc.postNotificationName("OAuthSwiftCallbackNotificationName", object: self as AnyObject, userInfo: userInfo )
+
             //Update the presenting view
-            let presentingView:ViewController = self.presentingViewController as ViewController
+            let presentingView:ViewController = self.presentingViewController as! ViewController
             presentingView.doAfterSignedIn()
             dismissViewControllerAnimated(true, completion: {
                 
