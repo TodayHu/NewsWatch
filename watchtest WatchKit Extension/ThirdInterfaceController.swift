@@ -60,7 +60,7 @@ class ThirdInterfaceController: WKInterfaceController {
         }
     }
     @IBAction func saveTapped() {
-        LibFeedlyManager.sharedInstance.addEntryToReadingList(entryId)
+        ReadItLaterManager.sharedInstance.addEntryToReadItLater(entryId, target: "Safari")
         if let _timer = timer {
             _timer.invalidate()
             timer = nil

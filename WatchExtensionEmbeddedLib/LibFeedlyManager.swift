@@ -11,12 +11,12 @@ import Alamofire
 import SwiftyJSON
 import Realm
 import IJReachability
-import SafariServices
 import KeychainAccess
 
 private let _FeedlyManagerSharedInstance = LibFeedlyManager()
 private let feedlyPrefix = "http://sandbox.feedly.com/v3"
 private let suiteName = "group.jp.ukai.watchtest"
+private let keychainGroup = "jp.ukay.Feetch"
 
 public class LibFeedlyManager {
     
@@ -229,13 +229,13 @@ public class LibFeedlyManager {
         }
     }
     
-    public func saveKeychainWithKey(key: String, value: String){
-        let keychain = Keychain(service: suiteName)
+    public func saveKeychainWithKey(key: String, value: String?){
+        let keychain = Keychain(service: suiteName, accessGroup:keychainGroup)
         keychain[key] = value
     }
     
     public func retrieveKeychainWithKey(key: String) -> String?{
-        let keychain = Keychain(service: suiteName)
+        let keychain = Keychain(service: suiteName, accessGroup:keychainGroup)
         return keychain[key]
     }
     
@@ -246,28 +246,15 @@ public class LibFeedlyManager {
         return value
     }
     
+    public func removeToken(){
+        saveKeychainWithKey(KeychainKeys.access_token, value: nil)
+    }
+    
     public func isUserHasValidToken() -> Bool{
         if let access_token = retrieveKeychainWithKey(KeychainKeys.access_token) {
             return true
         }
         return false
-    }
-    
-    public func addEntryToReadingList(entryId:String){
-        let predicate = NSPredicate(format: "id = %@", entryId)
-        if let item = Item.objectsWithPredicate(predicate).firstObject() as! Item? {
-            var error : NSError?
-            
-            AlchemyManager.sharedInstance.getExtractedTextWithUrl(item.url , completion: { resultText in
-                if (SSReadingList.defaultReadingList().addReadingListItemWithURL(NSURL(string:item.url), title: item.title, previewText: resultText, error: &error)){
-                    println("\(item.title) is properly added")
-                }else{
-                    println("Fail to add")
-                }
-            })
-            
-        }
-        
     }
     
     public func getProfile(){

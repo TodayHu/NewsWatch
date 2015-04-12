@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6751" systemVersion="14A386a" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watchtest_WatchKit_App" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Feetch_WatchKit_Extension">
                     <items>
                         <group width="1" alignment="left" verticalAlignment="bottom" id="zaI-ep-EdZ">
                             <items>
@@ -30,7 +30,7 @@
                         </label>
                         <table alignment="left" id="aRq-kN-gIN">
                             <items>
-                                <tableRow identifier="rowIdentifier" id="eKj-Et-Mld" customClass="MainRowType" customModule="watchtest_WatchKit_Extension">
+                                <tableRow identifier="rowIdentifier" id="eKj-Et-Mld" customClass="MainRowType" customModule="Feetch_WatchKit_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="dNR-ML-iAk">
                                         <items>
                                             <label width="1" alignment="left" text="Label" textAlignment="center" numberOfLines="10" id="uhT-jK-eBy">
@@ -60,7 +60,7 @@
         <!--DetailController-->
         <scene sceneID="y1l-aK-C57">
             <objects>
-                <controller identifier="DetailController" id="dHw-2U-UP4" customClass="ThirdInterfaceController" customModule="watchtest_WatchKit_Extension">
+                <controller identifier="DetailController" id="dHw-2U-UP4" customClass="ThirdInterfaceController" customModule="Feetch_WatchKit_Extension">
                     <items>
                         <label width="1" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="4yk-Dj-9xo">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
@@ -105,7 +105,7 @@
         <!--SettingController-->
         <scene sceneID="pAv-db-TVB">
             <objects>
-                <controller identifier="SettingController" id="cSv-nk-XUO" customClass="SettingInterfaceController" customModule="watchtest_WatchKit_Extension">
+                <controller identifier="SettingController" id="cSv-nk-XUO" customClass="SettingInterfaceController" customModule="Feetch_WatchKit_Extension">
                     <items>
                         <label alignment="center" verticalAlignment="center" text="Label" id="Mcl-PO-EEq"/>
                         <label alignment="right" verticalAlignment="bottom" text="Label" id="cSg-Q9-UV3">

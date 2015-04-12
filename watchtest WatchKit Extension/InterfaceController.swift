@@ -99,7 +99,8 @@ class InterfaceController: WKInterfaceController {
     }
     
     @IBAction func saveTapped() {
-        LibFeedlyManager.sharedInstance.addEntryToReadingList(previousEntryId)
+        //ReadItLaterManager.sharedInstance.addEntryToReadItLater(previousEntryId, target: "Instapaper")
+        ReadItLaterManager.sharedInstance.addEntryToInstapepr(previousEntryId, completion: nil)
     }
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {

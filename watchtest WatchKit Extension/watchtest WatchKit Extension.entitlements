@@ -6,5 +6,9 @@
 	<array>
 		<string>group.jp.ukai.watchtest</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)jp.ukay.Feetch</string>
+	</array>
 </dict>
 </plist>

@@ -1,6 +1,0 @@
-framework module Realm {
-  umbrella header "Pods-watchtest WatchKit Extension-Realm-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -3,7 +3,6 @@ PODS:
   - IJReachability (0.1.0)
   - KeychainAccess (1.2.0)
   - OAuthSwift (0.3.3)
-  - PocketAPI (1.0.3)
   - Realm (0.91.1):
     - Realm/Headers (= 0.91.1)
   - Realm/Headers (0.91.1)
@@ -14,7 +13,6 @@ DEPENDENCIES:
   - IJReachability (from `https://github.com/Isuru-Nanayakkara/IJReachability.git`)
   - KeychainAccess
   - OAuthSwift (~> 0.3.0)
-  - PocketAPI
   - Realm
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`, branch `xcode6.3`)
 
@@ -38,8 +36,7 @@ SPEC CHECKSUMS:
   IJReachability: 3eff33caca50869df09b257bcf712031a56a8575
   KeychainAccess: 6ff20bd4990b4840d8bde4e977f8c58e0fe7f3c1
   OAuthSwift: 29bc7d243cae227f6de01b9b215acfa6ca6d60f5
-  PocketAPI: 561fd4f428a38a4662c5837247c85f9962393f01
   Realm: b9c1fd9defa26aa7276ce938a8df52ec81f24528
   SwiftyJSON: a561c2a840121085bec8a2dfeac97a360fc66901
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.36.3
