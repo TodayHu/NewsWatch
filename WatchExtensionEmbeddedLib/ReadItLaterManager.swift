@@ -53,14 +53,14 @@ public class ReadItLaterManager{
         case ReadItLaterServices.Safari.rawValue:
             addEntryToReadingList(entryId)
         case ReadItLaterServices.Instapaper.rawValue:
-            addEntryToInstapepr(entryId, completion: nil)
+            addEntryToInstapaper(entryId, completion: nil)
         default:
             println("pocket")
         }
     }
     
     //This method must be called only after authentication
-    public func addEntryToInstapepr(entryId:String, completion: ((isSuccess:Bool) -> Void)?){
+    public func addEntryToInstapaper(entryId:String, completion: ((isSuccess:Bool) -> Void)?){
         let username = retrieveKeychainWithKey(.InstapaperUsername)!
         let password = retrieveKeychainWithKey(.InstapaperPassword)!
         let predicate = NSPredicate(format: "id = %@", entryId)

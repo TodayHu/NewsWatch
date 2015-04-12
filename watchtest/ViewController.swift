@@ -69,7 +69,6 @@ class ViewController: UIViewController {
         self.presentViewController(createInstapaperSignInDialog(), animated: true) { () -> Void in
             
         }
-        //ReadItLaterManager.sharedInstance.addEntryToInstapepr("Xne8uW/IUiZhV1EuO2ZMzIrc2Ak6NlhGjboZ+Yk0rJ8=_14cac6ebfc0:5af27:b39ab8d", completion: nil)
     }
     
     func createInstapaperSignInDialog() -> UIAlertController{
