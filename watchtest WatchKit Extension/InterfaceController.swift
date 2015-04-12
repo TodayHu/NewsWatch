@@ -100,7 +100,7 @@ class InterfaceController: WKInterfaceController {
     
     @IBAction func saveTapped() {
         //ReadItLaterManager.sharedInstance.addEntryToReadItLater(previousEntryId, target: "Instapaper")
-        ReadItLaterManager.sharedInstance.addEntryToInstapepr(previousEntryId, completion: nil)
+        ReadItLaterManager.sharedInstance.addEntryToInstapaper(previousEntryId, completion: nil)
     }
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {

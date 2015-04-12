@@ -11,6 +11,7 @@ import SafariServices
 import SwiftyJSON
 import Alamofire
 import KeychainAccess
+//import PocketAPI
 
 private let _RILManagerSharedInstance = ReadItLaterManager()
 

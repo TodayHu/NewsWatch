@@ -21,4 +21,5 @@ pod 'Alamofire', '~> 1.1'
 pod 'Realm'
 pod 'IJReachability', :git => 'https://github.com/Isuru-Nanayakkara/IJReachability.git'
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branch => 'xcode6.3'
+pod 'PocketAPI'
 end
