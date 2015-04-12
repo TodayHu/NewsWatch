@@ -1,0 +1,6 @@
+framework module PocketAPI {
+  umbrella header "Pods-PocketAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}
