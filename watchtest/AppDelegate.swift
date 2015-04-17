@@ -18,7 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        //LibFeedlyManager.sharedInstance.removeToken()
+        //ReadItLaterManager.sharedInstance.removeToken()
+        if LibFeedlyManager.sharedInstance.isUserHasValidToken(){
+            let storyboard = self.window?.rootViewController?.storyboard
+            let tableViewController = storyboard?.instantiateViewControllerWithIdentifier("navigationView") as! UINavigationController
+            window?.rootViewController = tableViewController
+            window?.makeKeyAndVisible()
+        }
         return true
     }
     

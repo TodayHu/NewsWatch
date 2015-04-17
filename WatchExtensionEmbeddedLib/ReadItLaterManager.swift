@@ -40,6 +40,8 @@ public class ReadItLaterManager{
         case Safari = "Safari"
         case Instapaper = "Instapaper"
         case Pocket = "Pocket"
+        
+        public static let allValues = [Safari, Instapaper, Pocket]
     }
     
     public func addEntryToReadItLater(entryId:String, target:String?){
