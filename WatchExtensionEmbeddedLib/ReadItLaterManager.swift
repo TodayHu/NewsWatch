@@ -171,4 +171,12 @@ public class ReadItLaterManager{
         println("\(value) is retrieved")
         return value
     }
+    
+    public func isSignedInInstapaper() -> Bool{
+        if retrieveKeychainWithKey(.InstapaperUsername) != nil && retrieveKeychainWithKey(.InstapaperPassword) != nil {
+            return true
+        }else{
+            return false
+        }
+    }
 }

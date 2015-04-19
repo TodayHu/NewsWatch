@@ -64,73 +64,14 @@ class ViewController: UIViewController {
     func doAfterSignedIn(){
         signInView.hidden = true
         logoImageView.hidden = true
-    }
-    @IBAction func instapaperTapped(sender: AnyObject) {
-        self.presentViewController(createInstapaperSignInDialog(), animated: true) { () -> Void in
-            
-        }
-    }
-    
-    func createInstapaperSignInDialog() -> UIAlertController{
-        var alertController = UIAlertController(title: "Instapaper", message: "Please enter your Instapaper user name and password.", preferredStyle: .Alert)
         
-        alertController.addTextFieldWithConfigurationHandler { (textField) in
-            textField.placeholder = "User Name"
-            textField.keyboardType = .EmailAddress
-        }
         
-        alertController.addTextFieldWithConfigurationHandler { (textField) in
-            textField.placeholder = "Password"
-            textField.secureTextEntry = true
-        }
+        let tableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("navigationView") as! UINavigationController
+        UIApplication.sharedApplication().keyWindow?.rootViewController = tableViewController
+        //self.view.window?.rootViewController = tableViewController
+            //window?.makeKeyAndVisible()
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
-            self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                
-            })
-        }
-        alertController.addAction(cancelAction)
-        
-        let signinAction = UIAlertAction(title: "Sign-in", style: .Default){ (action) in
-            
-            let username = (alertController.textFields![0] as! UITextField).text
-            let password = (alertController.textFields![1] as! UITextField).text
-            
-            ReadItLaterManager.sharedInstance.authToInstapepr(username, password: password, completion: { isSuccess in
-                let alertTitle:String
-                let buttonTitle:String
-                if(isSuccess){
-                    alertTitle = "Successfully sign-in"
-                    buttonTitle = "OK"
-                }else{
-                    alertTitle = "Sign-in failed"
-                    buttonTitle = "Retry"
-                }
-                
-                var dialogController = UIAlertController(title: alertTitle, message: nil, preferredStyle: .Alert)
-                
-                let actionButton = UIAlertAction(title: buttonTitle, style: .Default) {
-                    action in
-                    if(!isSuccess){
-                        self.presentViewController(self.createInstapaperSignInDialog(), animated: true) { () -> Void in
-                            
-                        }
-                    }
-                }
-                
-                // addActionした順に左から右にボタンが配置されます
-                dialogController.addAction(actionButton)
-                
-                self.presentViewController(dialogController, animated: true, completion: nil)
-                
-            })
-        }
-        
-        alertController.addAction(signinAction)
-        
-        return alertController
-    }
-    
+    }    
     /*
     @IBAction func syncTapped(sender: AnyObject) {
         LibFeedlyManager.sharedInstance.getNewItems({ _error in

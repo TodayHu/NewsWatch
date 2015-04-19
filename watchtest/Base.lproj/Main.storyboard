@@ -58,25 +58,14 @@
                                     <constraint firstAttribute="height" constant="20" id="x3e-i2-Qxf"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzc-5L-VfY">
-                                <rect key="frame" x="137" y="450" width="73" height="30"/>
-                                <state key="normal" title="Instapaper">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="instapaperTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3nH-fk-UjO"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pQm-Hw-NyU" firstAttribute="top" secondItem="f4T-L0-vzG" secondAttribute="bottom" constant="10" id="8ow-NX-nEz"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="pQm-Hw-NyU" secondAttribute="bottom" constant="30" id="HX3-ci-l8k"/>
                             <constraint firstItem="f4T-L0-vzG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GVR-yd-hY1" secondAttribute="bottom" constant="10" id="IZN-PO-K3f"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="hzc-5L-VfY" secondAttribute="bottom" constant="10" id="NGy-pt-JhP"/>
                             <constraint firstAttribute="centerX" secondItem="f4T-L0-vzG" secondAttribute="centerX" id="ThE-qQ-dQI"/>
                             <constraint firstAttribute="centerX" secondItem="GVR-yd-hY1" secondAttribute="centerX" id="eN0-Mf-xUX"/>
-                            <constraint firstAttribute="centerY" secondItem="hzc-5L-VfY" secondAttribute="centerY" id="ktl-ll-aMf"/>
                             <constraint firstAttribute="centerY" secondItem="GVR-yd-hY1" secondAttribute="centerY" id="m7B-bU-5yZ"/>
                             <constraint firstAttribute="centerX" secondItem="pQm-Hw-NyU" secondAttribute="centerX" id="zEa-v2-8zz"/>
                         </constraints>
