@@ -18,8 +18,8 @@ class tableViewController:UITableViewController{
         super.viewDidLoad()
         self.title = "Feetch"
         
-        LibFeedlyManager.sharedInstance.removeToken()
-        ReadItLaterManager.sharedInstance.removeToken()
+        //LibFeedlyManager.sharedInstance.removeToken()
+        //ReadItLaterManager.sharedInstance.removeToken()
         //tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: TableViewCellIdentifier)
     }
     

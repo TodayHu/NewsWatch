@@ -65,11 +65,8 @@ class ViewController: UIViewController {
         signInView.hidden = true
         logoImageView.hidden = true
         
-        
         let tableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("navigationView") as! UINavigationController
         UIApplication.sharedApplication().keyWindow?.rootViewController = tableViewController
-        //self.view.window?.rootViewController = tableViewController
-            //window?.makeKeyAndVisible()
         
     }    
     /*
