@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 import WatchExtensionEmbeddedLib
+import Mixpanel
 
 class tableViewController:UITableViewController{
     let TableViewCellIdentifier:String = "CELL"
-    let listOfReadItLater = ["Reading list","Instapaper"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class tableViewController:UITableViewController{
         
         //LibFeedlyManager.sharedInstance.removeToken()
         //ReadItLaterManager.sharedInstance.removeToken()
-        //tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: TableViewCellIdentifier)
+        Mixpanel.sharedInstance().track("Launch")
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

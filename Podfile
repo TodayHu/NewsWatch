@@ -7,6 +7,7 @@ pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branc
 pod "OAuthSwift", "~> 0.3.0"
 pod 'Realm'
 pod 'IJReachability', :git => 'https://github.com/Isuru-Nanayakkara/IJReachability.git'
+pod 'Mixpanel'
 
 target 'Feetch WatchKit Extension', :exclusive => true do
 pod 'Alamofire', '~> 1.1'

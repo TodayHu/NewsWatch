@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 import Realm
 import WatchExtensionEmbeddedLib
+import Mixpanel
 
 class ViewController: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
@@ -28,6 +29,8 @@ class ViewController: UIViewController {
         }else{
             signInView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("signInTapped:")))
         }
+        
+        Mixpanel.sharedInstance().track("LaunchBeforeSignIn")
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,14 +41,22 @@ class ViewController: UIViewController {
     func feedlyTapped() {
         let mystoryboard = UIStoryboard(name: "Main", bundle: nil)
         var webController = mystoryboard.instantiateViewControllerWithIdentifier("webView")
-        
+        // Dogfood
         let oauthswift = OAuth2Swift(
             consumerKey:    "sandbox",
             consumerSecret: "4205DQXBAP99S8SUHXI3",
             authorizeUrl:   "http://sandbox.feedly.com/v3/auth/auth",
             accessTokenUrl: "http://sandbox.feedly.com/v3/auth/token",
             responseType:   "code"
-        )
+        )/*
+        let oauthswift = OAuth2Swift(
+            consumerKey:    "feetch",
+            consumerSecret: "FE01SDU7O7EANBRGNRPX8JOPWC8T",
+            authorizeUrl:   "http://feedly.com/v3/auth/auth",
+            accessTokenUrl: "http://feedly.com/v3/auth/token",
+            responseType:   "code"
+        )*/
+        
         oauthswift.webViewController = webController! as! FeedlyViewController
         oauthswift.authorizeWithCallbackURL( NSURL(string: "http://localhost")!, scope: "https://cloud.feedly.com/subscriptions", state: "Feedly", success: {
                 credential, response in
@@ -59,6 +70,7 @@ class ViewController: UIViewController {
     
     @IBAction func signInTapped(recognizer:UITapGestureRecognizer){
         feedlyTapped()
+        Mixpanel.sharedInstance().track("SignInTapped")
     }
     
     func doAfterSignedIn(){
@@ -68,6 +80,7 @@ class ViewController: UIViewController {
         let tableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("navigationView") as! UINavigationController
         UIApplication.sharedApplication().keyWindow?.rootViewController = tableViewController
         
+        Mixpanel.sharedInstance().track("SignInSucceeded")
     }    
     /*
     @IBAction func syncTapped(sender: AnyObject) {

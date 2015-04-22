@@ -12,6 +12,7 @@ import SwiftyJSON
 import OAuthSwift
 import WatchExtensionEmbeddedLib
 import Realm
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,7 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = tableViewController
             window?.makeKeyAndVisible()
         }
+        
+        initMixPanel()
+        
         return true
+    }
+    
+    func initMixPanel(){
+        Mixpanel.sharedInstanceWithToken("aedd7436b52f12a6eb1f783305ba89ff")
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
