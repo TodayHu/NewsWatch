@@ -14,7 +14,8 @@ import IJReachability
 import KeychainAccess
 
 private let _FeedlyManagerSharedInstance = LibFeedlyManager()
-private let feedlyPrefix = "http://sandbox.feedly.com/v3"
+//private let feedlyPrefix = "http://sandbox.feedly.com/v3"
+private let feedlyPrefix = "http://feedly.com/v3"
 private let suiteName = "group.jp.ukai.watchtest"
 private let keychainGroup = "jp.ukay.Feetch"
 

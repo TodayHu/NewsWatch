@@ -21,6 +21,8 @@ class tableViewController:UITableViewController{
         //LibFeedlyManager.sharedInstance.removeToken()
         //ReadItLaterManager.sharedInstance.removeToken()
         Mixpanel.sharedInstance().track("Launch")
+        
+        LibFeedlyManager.sharedInstance.getNewItems(nil)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

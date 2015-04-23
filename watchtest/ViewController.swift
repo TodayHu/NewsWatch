@@ -41,21 +41,21 @@ class ViewController: UIViewController {
     func feedlyTapped() {
         let mystoryboard = UIStoryboard(name: "Main", bundle: nil)
         var webController = mystoryboard.instantiateViewControllerWithIdentifier("webView")
-        // Dogfood
+        /*// Dogfood
         let oauthswift = OAuth2Swift(
             consumerKey:    "sandbox",
             consumerSecret: "4205DQXBAP99S8SUHXI3",
             authorizeUrl:   "http://sandbox.feedly.com/v3/auth/auth",
             accessTokenUrl: "http://sandbox.feedly.com/v3/auth/token",
             responseType:   "code"
-        )/*
+        )*/
         let oauthswift = OAuth2Swift(
             consumerKey:    "feetch",
             consumerSecret: "FE01SDU7O7EANBRGNRPX8JOPWC8T",
             authorizeUrl:   "http://feedly.com/v3/auth/auth",
             accessTokenUrl: "http://feedly.com/v3/auth/token",
             responseType:   "code"
-        )*/
+        )
         
         oauthswift.webViewController = webController! as! FeedlyViewController
         oauthswift.authorizeWithCallbackURL( NSURL(string: "http://localhost")!, scope: "https://cloud.feedly.com/subscriptions", state: "Feedly", success: {

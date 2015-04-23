@@ -112,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }else if(action == "getContent"){
             let entryId = userInfo["entryId"] as! String
-            SpeedReadingManager.convertStringToArray(entryId, completion: { _error, _result in
+            SpeedReadingManager.convertStringToArrayWithLocal(entryId, completion: { _error, _result in
                 let resultArray = _result as Array<String>
                 let resultDic = ["response" : "success","data":resultArray]
                 println(resultDic)

@@ -70,8 +70,16 @@ class ThirdInterfaceController: WKInterfaceController {
     
     func timerCalled(){
         current++
-        label.setText(self.arrayOfText[current])
-        println("timerCalled \(current)")
+        if(current >= arrayOfText.count){
+            if let _timer = timer {
+                _timer.invalidate()
+                timer = nil
+            }
+            actionButton.setTitle("Play")
+        }else{
+            label.setText(self.arrayOfText[current])
+            println("timerCalled \(current)")
+        }
     }
     
     func configureItems(){

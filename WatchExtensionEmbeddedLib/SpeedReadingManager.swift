@@ -42,6 +42,44 @@ public class SpeedReadingManager{
         }
     }
     
+    public class func convertStringToArrayWithLocal(entryId:String, completion:((error:NSError?, result:Array<String>)->Void)?){
+        var array:Array<String> = []
+        let realm = RLMRealm.defaultRealm()
+        let predicate = NSPredicate(format: "id = %@", entryId)
+        if let item = Item.objectsWithPredicate(predicate).firstObject() as! Item? {
+            
+            let lang = getLanguage(item.title)
+            
+            if let content = item.content {
+                let originalText = content                /*
+                let attr = NSAttributedString(data: originalText.dataUsingEncoding(NSUTF8StringEncoding)!,
+                    options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                    NSCharacterEncodingDocumentAttribute:NSUTF8StringEncoding], documentAttributes: nil, error: nil)
+                let text = attr!.string as NSString*/
+                let text = originalText.stringByReplacingOccurrencesOfString("<[^>]+>", withString: "", options: .RegularExpressionSearch, range: nil) as NSString
+
+                println(text)
+                
+                let schemes = [NSLinguisticTagSchemeLexicalClass]
+                let options = NSLinguisticTaggerOptions.OmitWhitespace | NSLinguisticTaggerOptions.JoinNames
+                let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
+                tagger.string = text as String
+                let textRange = NSMakeRange(0, text.length - 1)
+                
+                tagger.enumerateTagsInRange(textRange, scheme: NSLinguisticTagSchemeLexicalClass, options: options, usingBlock:{ (tag:String!, tokenRange:NSRange, _, _) -> Void in
+                    let token = text.substringWithRange(tokenRange)
+                    if( tag != NSLinguisticTagNoun && tag != NSLinguisticTagVerb && tag != NSLinguisticTagAdjective && tag != NSLinguisticTagAdverb && tag != NSLinguisticTagPronoun ){
+                        array[array.count-1] = array.last as String! + token
+                    }else{
+                        array.append(token)
+                    }
+                })
+                println(array)
+                completion?(error: nil,result: array)
+            }
+        }
+    }
+    
     public class func getLanguage(text:NSString) -> String{
         let schemes = [NSLinguisticTagSchemeLanguage]
         let options = NSLinguisticTaggerOptions.OmitWhitespace | NSLinguisticTaggerOptions.OmitPunctuation | NSLinguisticTaggerOptions.OmitOther
